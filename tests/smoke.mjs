@@ -33,6 +33,15 @@ await page.goto('http://127.0.0.1:5174/', { waitUntil: 'networkidle' });
 await page.evaluate(() => document.fonts.ready);
 assert.match(await page.locator('h1').innerText(), /Inteligência analítica e ciência de dados/);
 assert.equal(await page.locator('.service-card').count(), 4);
+assert.match(await page.locator('#dados').innerText(), /baseline com lideranças/);
+assert.match(await page.locator('#dados').innerText(), /Lei de Acesso à Informação/);
+await page.locator('.term-guide summary').click();
+assert.equal(await page.locator('.term-guide').evaluate(el => el.open), true);
+assert.match(await page.locator('.term-guide').innerText(), /semelhança de significado/);
+await page.locator('.term-guide summary').click();
+await page.getByRole('navigation').getByRole('link', { name: 'Dados e pesquisa' }).click();
+assert.equal(new URL(page.url()).hash, '#dados');
+await page.evaluate(() => scrollTo(0, 0));
 await page.screenshot({ path: 'test-results/desktop.png', fullPage: true });
 const desktopAxe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
 
@@ -60,6 +69,10 @@ assert.equal(await page.locator('select[name="interest"]').inputValue(), 'Radar 
 await page.locator('button[type="submit"]').click();
 assert.equal(await page.locator('input[name="name"]').evaluate(el => el.validity.valueMissing), true);
 assert.equal(await page.locator('#form-status').innerText(), '');
+await page.locator('input[name="name"]').fill('   ');
+assert.equal(await page.locator('input[name="name"]').evaluate(el => el.validity.customError), true);
+await page.locator('textarea[name="message"]').fill('          ');
+assert.equal(await page.locator('textarea[name="message"]').evaluate(el => el.validity.customError), true);
 await page.locator('input[name="name"]').fill('Pessoa de teste');
 await page.locator('input[name="email"]').fill('pessoa@example.org');
 await page.locator('textarea[name="message"]').fill('Gostaria de discutir um projeto de indicadores ambientais.');
@@ -81,12 +94,14 @@ const dialogAxe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 
 await page.keyboard.press('Escape');
 
 const responsive = [];
-for (const width of [320, 375, 390, 768, 1024, 1440]) {
+for (const width of [320, 375, 390, 768, 901, 950, 1024, 1440]) {
   await page.setViewportSize({ width, height: 900 });
   await page.goto('http://127.0.0.1:5174/', { waitUntil: 'networkidle' });
   const dimensions = await page.evaluate(() => ({ width: innerWidth, content: document.documentElement.scrollWidth }));
   responsive.push(dimensions);
   assert.ok(dimensions.content <= dimensions.width, `Overflow at ${width}: ${dimensions.content}`);
+assert.ok(await page.locator('.hero-lead').evaluate(el => parseFloat(getComputedStyle(el).fontSize)) >= 16, `Hero copy too small at ${width}`);
+assert.ok(await page.locator('.service-card > p').first().evaluate(el => parseFloat(getComputedStyle(el).fontSize)) >= 16, `Service copy too small at ${width}`);
 }
 await page.setViewportSize({ width: 390, height: 844 });
 await page.goto('http://127.0.0.1:5174/', { waitUntil: 'networkidle' });

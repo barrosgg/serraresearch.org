@@ -1,6 +1,6 @@
 # Serra Research
 
-Site institucional responsivo baseado no design system **Serra Precision Research** fornecido para o projeto. A página apresenta atuação, frentes de projetos, metodologia e contato em português brasileiro.
+Site institucional responsivo baseado no design system **Serra Precision Research** fornecido para o projeto. A página única apresenta atuação, dados e pesquisa, frentes de projetos, metodologia e contato em português brasileiro. A seção de contexto detalha pesquisa educacional, socioeconômica e territorial com bases públicas, microdados, baseline com lideranças e acompanhamento de resultados e impacto, além da preparação de documentos com OCR, chunks, embeddings, bancos vetoriais e MCPs. Um glossário expansível explica os termos técnicos.
 
 ## Desenvolvimento
 
@@ -27,7 +27,7 @@ O build gera o site estático em `dist/`. Para verificar esse resultado localmen
 npm run preview -- --port 4173 --strictPort
 ```
 
-O teste inicia seu próprio servidor na porta 5174 e utiliza Chromium com Playwright. Verifica os quatro detalhes de serviços, seleção de interesse, navegação por teclado nas abas, validação do formulário, destinatário e conteúdo do e-mail, menu móvel, ausência de erros JavaScript e carregamento de recursos, layouts de 320 a 1440 pixels e verificações automatizadas de acessibilidade com axe. Relatórios e capturas são gerados em `test-results/`, que não é versionado.
+O teste inicia seu próprio servidor na porta 5174 e utiliza Chromium com Playwright. Verifica os quatro detalhes de serviços, seleção de interesse, navegação por teclado nas abas, validação do formulário, destinatário e conteúdo do e-mail, menu móvel, navegação para dados e pesquisa, glossário e rejeição de campos preenchidos apenas com espaços, ausência de erros JavaScript e carregamento de recursos, layouts de 320 a 1440 pixels e verificações automatizadas de acessibilidade com axe. Relatórios e capturas são gerados em `test-results/`, que não é versionado.
 
 No ambiente cloud, o teste usa `/usr/bin/chromium`. Em outra máquina, configure `CHROMIUM_PATH` com o caminho de um Chromium instalado ou execute `npx playwright install chromium` para instalar o navegador gerenciado pelo Playwright.
 
