@@ -41,6 +41,7 @@ assert.match(await page.locator('.term-guide').innerText(), /semelhança de sign
 await page.locator('.term-guide summary').click();
 await page.getByRole('navigation').getByRole('link', { name: 'Dados e pesquisa' }).click();
 assert.equal(new URL(page.url()).hash, '#dados');
+await page.waitForFunction(() => document.querySelector('nav a[href="#dados"]')?.getAttribute('aria-current') === 'location');
 await page.evaluate(() => scrollTo(0, 0));
 await page.screenshot({ path: 'test-results/desktop.png', fullPage: true });
 const desktopAxe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
@@ -110,6 +111,7 @@ assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), '
 await page.getByRole('navigation').getByRole('link', { name: 'Metodologia' }).click();
 assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'false');
 assert.equal(new URL(page.url()).hash, '#metodologia');
+await page.waitForFunction(() => document.querySelector('nav a[href="#metodologia"]')?.getAttribute('aria-current') === 'location');
 await page.locator('.menu-toggle').click();
 await page.keyboard.press('Escape');
 assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'false');

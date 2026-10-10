@@ -2,6 +2,8 @@
 
 Site institucional responsivo baseado no design system **Serra Precision Research** fornecido para o projeto. A página única apresenta atuação, dados e pesquisa, frentes de projetos, metodologia e contato em português brasileiro. A seção de contexto detalha pesquisa educacional, socioeconômica e territorial com bases públicas, microdados, baseline com lideranças e acompanhamento de resultados e impacto, além da preparação de documentos com OCR, chunks, embeddings, bancos vetoriais e MCPs. Um glossário expansível explica os termos técnicos.
 
+A interface combina a base clara da marca com laranja, azul de dados, filetes em gradiente e ícones luminosos. A composição usa navegação flutuante, cards de atuação com diferentes superfícies, conteúdo editorial e uma linha metodológica conectada, com adaptações para celular.
+
 ## Desenvolvimento
 
 Requer Node.js 20.19+ ou 22.12+ e npm. O ambiente foi validado com Node.js 24.19.0.

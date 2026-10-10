@@ -65,7 +65,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <span class="coordinate coordinate-two mono">CIÊNCIA → IMPACTO</span>
         <div class="visual-cross cross-one">+</div><div class="visual-cross cross-two">+</div>
         <div class="visual-card"><span class="mini-icon">${icon('layers')}</span><div><span class="mono">INTELIGÊNCIA CONECTADA</span><strong>Uma visão. Múltiplas camadas.</strong></div><span class="card-dot"></span></div>
-        <div class="visual-bottom mono"><span>COMPLEXIDADE EM PERSPECTIVA</span><span>FIG. 01</span></div>
+        <div class="visual-bottom mono"><span>COMPLEXIDADE EM PERSPECTIVA</span><span>FIG. 01 / SERRA</span></div>
       </div>
     </div>
     <div class="container hero-bottom"><span class="mono">DA PESQUISA À TOMADA DE DECISÃO</span><a href="#atuacao" aria-label="Explorar atuação">Role para explorar <span>↓</span></a></div>
@@ -75,7 +75,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <section class="section expertise" id="atuacao" aria-labelledby="expertise-title">
     <div class="container">
       <div class="section-heading"><div><span class="eyebrow">01 / ÁREAS DE ATUAÇÃO</span><h2 id="expertise-title">Complexidade é o ponto de partida.<br><span>Clareza é o que entregamos.</span></h2></div><p>Quatro frentes complementares para transformar dados em conhecimento e conhecimento em decisões de impacto.</p></div>
-      <div class="services-grid">${services.map((s, i) => `<article class="service-card"><div class="service-top"><span class="service-icon">${icon(s.icon)}</span><span class="mono">${s.code}</span></div><h3>${s.name}</h3><p>${s.description}</p><div class="tags">${s.tags.map(t => `<span>${t}</span>`).join('')}</div><button class="service-more text-link" data-service="${i}" aria-label="Saiba mais sobre ${s.name}">Explorar solução ${arrow}</button></article>`).join('')}</div>
+      <div class="services-grid">${services.map((s, i) => `<article class="service-card"><div class="service-top"><span class="service-icon">${icon(s.icon)}</span><span class="service-index mono"><span>${String(i + 1).padStart(2, '0')}</span>${s.code}</span></div><h3>${s.name}</h3><p>${s.description}</p><div class="tags">${s.tags.map(t => `<span>${t}</span>`).join('')}</div><button class="service-more text-link" data-service="${i}" aria-label="Saiba mais sobre ${s.name}">Explorar solução ${arrow}</button></article>`).join('')}</div>
     </div>
   </section>
 
@@ -138,7 +138,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <section class="section contact" id="contato" aria-labelledby="contact-title">
     <div class="container contact-grid">
       <div class="contact-copy"><span class="eyebrow">04 / VAMOS CONVERSAR</span><h2 id="contact-title">Qual é o próximo<br>desafio que vamos<br><span>investigar?</span></h2><p>Conte o contexto do seu projeto. Vamos construir o caminho entre a sua pergunta e uma decisão orientada por evidências.</p><a class="contact-email" href="mailto:oi@serraresearch.org">oi@serraresearch.org ${northeast}</a><div class="contact-meta mono"><span class="status-dot"></span> PESQUISA + TECNOLOGIA + IMPACTO</div></div>
-      <form id="contact-form" class="contact-form"><h3>Comece uma conversa.</h3><p class="form-description">Conte sobre seu projeto. Campos com * são obrigatórios.</p><div class="form-row"><label>SEU NOME <span>*</span><input name="name" autocomplete="name" placeholder="Seu nome" required maxlength="120"></label><label>E-MAIL <span>*</span><input name="email" type="email" autocomplete="email" placeholder="voce@organizacao.org" required maxlength="200"></label></div><label>ORGANIZAÇÃO (OPCIONAL)<input name="organization" autocomplete="organization" placeholder="Nome da sua organização" maxlength="180"></label><label>ÁREA DE INTERESSE (OPCIONAL)<select name="interest"><option value="">Vamos descobrir juntos</option>${services.map(s => `<option>${s.name}</option>`).join('')}</select></label><label>SOBRE O PROJETO <span>*</span><textarea name="message" rows="4" placeholder="Qual desafio você quer resolver?" required minlength="10" maxlength="5000"></textarea></label><p class="form-note">Ao continuar, seu aplicativo de e-mail abrirá com a mensagem preenchida. Os dados deste formulário não são armazenados pelo site.</p><button class="button" type="submit">Preparar e-mail ${arrow}</button><p id="form-status" class="form-status" role="status" aria-live="polite"></p></form>
+      <form id="contact-form" class="contact-form"><h3>Comece uma conversa.</h3><p class="form-description">Conte sobre seu projeto. Campos com * são obrigatórios.</p><div class="form-row"><label>Seu nome <span>*</span><input name="name" autocomplete="name" placeholder="Seu nome" required maxlength="120"></label><label>E-mail <span>*</span><input name="email" type="email" autocomplete="email" placeholder="voce@organizacao.org" required maxlength="200"></label></div><label>Organização (opcional)<input name="organization" autocomplete="organization" placeholder="Nome da sua organização" maxlength="180"></label><label>Área de interesse (opcional)<select name="interest"><option value="">Vamos descobrir juntos</option>${services.map(s => `<option>${s.name}</option>`).join('')}</select></label><label>Sobre o projeto <span>*</span><textarea name="message" rows="4" placeholder="Qual desafio você quer resolver?" required minlength="10" maxlength="5000"></textarea></label><p class="form-note">Ao continuar, seu aplicativo de e-mail abrirá com a mensagem preenchida. Os dados deste formulário não são armazenados pelo site.</p><button class="button" type="submit">Preparar e-mail ${arrow}</button><p id="form-status" class="form-status" role="status" aria-live="polite"></p></form>
     </div>
   </section>
 </main>
@@ -228,8 +228,24 @@ document.querySelector<HTMLFormElement>('#contact-form')!.addEventListener('subm
   };
 });
 
-const sections = document.querySelectorAll<HTMLElement>('section[id]:not(#inicio), #dados');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if (entry.isIntersecting) { nav.querySelectorAll('a').forEach(a => { if (a.getAttribute('href') === `#${entry.target.id}`) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current'); }); } });
-}, { rootMargin: '-15% 0px -55% 0px' });
-sections.forEach(s => observer.observe(s));
+const sections = Array.from(document.querySelectorAll<HTMLElement>('section[id]:not(#inicio), #dados'));
+let scrollFramePending = false;
+function updateNavigation() {
+  const readingLine = Math.min(window.innerHeight * 0.28, 200);
+  let active = '';
+  for (const section of sections) {
+    if (section.getBoundingClientRect().top <= readingLine) active = section.id;
+  }
+  nav.querySelectorAll('a').forEach(link => {
+    if (link.getAttribute('href') === `#${active}`) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+}
+function scheduleNavigationUpdate() {
+  if (scrollFramePending) return;
+  scrollFramePending = true;
+  requestAnimationFrame(() => { updateNavigation(); scrollFramePending = false; });
+}
+window.addEventListener('scroll', scheduleNavigationUpdate, { passive: true });
+window.addEventListener('resize', scheduleNavigationUpdate);
+updateNavigation();
