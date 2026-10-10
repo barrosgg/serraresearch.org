@@ -1,23 +1,23 @@
 ---
 import {pick,navLabels,type Locale} from '../i18n';
 import {home,link,sections} from '../lib/site';
-interface Props {lang:Locale; alternate:string; landing?:boolean;}
-const {lang,alternate,landing=false}=Astro.props;
+interface Props {lang:Locale; alternate:string; landing?:boolean;documentation?:{id:string;label:string}[];}
+const {lang,alternate,landing=false,documentation}=Astro.props;
 const p=(pt:string,en:string)=>pick(lang,pt,en);
 ---
 <header class="mobile-header">
  <a class="wordmark" href={home(lang)} aria-label={p('Serra Research — início','Serra Research — home')}>Serra <span>Research</span><i></i></a>
  <button class="menu-toggle" aria-label={p('Abrir menu','Open menu')} aria-controls="sidebar" aria-expanded="false"><span></span><span></span></button>
 </header>
-<aside class="sidebar" id="sidebar" aria-label={p('Menu e ferramentas','Menu and tools')}>
+<aside class:list={['sidebar',{'sidebar-docs':Boolean(documentation)}]} id="sidebar" aria-label={p('Menu e ferramentas','Menu and tools')}>
  <button class="sidebar-close" data-menu-close aria-label={p('Fechar menu','Close menu')}>×</button>
  <a class="wordmark sidebar-brand" href={home(lang)} aria-label={p('Serra Research — início','Serra Research — home')}>Serra <span>Research</span><i></i></a>
- <div class="sidebar-label mono">{p('PESQUISA + ENGENHARIA','RESEARCH + ENGINEERING')}</div>
+ <div class="sidebar-label mono">{documentation?p('ÍNDICE DA DOCUMENTAÇÃO','DOCUMENTATION INDEX'):p('PESQUISA + ENGENHARIA','RESEARCH + ENGINEERING')}</div>
  <nav id="navigation" aria-label={p('Navegação principal','Main navigation')}>
-  {sections.map((id,i)=><a href={`${landing?'':home(lang)}#${id}`}><span class="nav-number mono">{String(i+1).padStart(2,'0')}</span><span>{navLabels[lang][i]}</span><span class="nav-arrow" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>)}
+  {(documentation||sections.map((id,i)=>({id,label:navLabels[lang][i]}))).map(({id,label},i)=><a href={`${documentation||landing?'':home(lang)}#${id}`}><span class="nav-number mono">{String(i+1).padStart(2,'0')}</span><span>{label}</span><span class="nav-arrow" aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>)}
  </nav>
  <div class="sidebar-bottom">
-  <a class="button button-small" href={`${landing?'':home(lang)}#contato`}>{p('Vamos conversar','Let’s talk')} <span aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+  <a class="button button-small" href={documentation?home(lang):`${landing?'':home(lang)}#contato`}>{documentation?p('Voltar ao site','Back to the site'):p('Vamos conversar','Let’s talk')} <span aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
   <div class="sidebar-tools"><button data-open="accessibility-dialog" class="tool-button"><span aria-hidden="true">Aa</span> {p('Acessibilidade','Accessibility')}</button><a href={alternate} hreflang={lang==='pt'?'en':'pt-BR'} lang={lang==='pt'?'en':'pt-BR'} class="language-link">{lang==='pt'?'EN':'PT'} <span aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
   <a class="sidebar-privacy mono" href={link('privacy',lang)}>{p('DADOS COM RESPONSABILIDADE','RESPONSIBLE DATA')}</a>
  </div>

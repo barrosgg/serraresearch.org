@@ -1,0 +1,15 @@
+<svg fill="none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="100" cy="100" r="85" stroke="#DFE1EA" stroke-dasharray="3 3" stroke-width="1"></circle>
+                  <ellipse cx="100" cy="100" rx="90" ry="32" stroke="#A7A9B0" stroke-width="1" transform="rotate(-25 100 100)"></ellipse>
+                  <circle cx="100" cy="100" fill="url(#grad-orbe2)" opacity="0.85" r="54"></circle>
+                  <circle cx="100" cy="100" r="54" stroke="#FD5638" stroke-width="1.2"></circle>
+                  <line opacity="0.6" stroke="#FD5638" stroke-dasharray="4 4" stroke-width="1" x1="100" x2="100" y1="20" y2="180"></line>
+                  <circle cx="145" cy="80" fill="#FD5638" r="4"></circle>
+                  <defs>
+                    <radialGradient cx="0" cy="0" gradientTransform="translate(90 90) rotate(45) scale(60)" gradientUnits="userSpaceOnUse" id="grad-orbe2" r="1">
+                      <stop stop-color="#FD5638" stop-opacity="0.35"></stop>
+                      <stop offset="0.7" stop-color="#FD5638" stop-opacity="0.1"></stop>
+                      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop>
+                    </radialGradient>
+                  </defs>
+                </svg>

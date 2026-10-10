@@ -1,0 +1,12 @@
+<svg fill="none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <pattern height="20" id="grid-patt" patternUnits="userSpaceOnUse" width="20">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#DFE1EA" stroke-width="0.8"></path>
+                  </pattern>
+                  <rect fill="url(#grid-patt)" height="200" width="200"></rect>
+                  <circle cx="100" cy="100" fill="#FD5638" r="3"></circle>
+                  <circle cx="85" cy="95" fill="#FD5638" opacity="0.8" r="2.5"></circle>
+                  <circle cx="115" cy="105" fill="#FD5638" opacity="0.8" r="2.5"></circle>
+                  <circle cx="120" cy="90" fill="#494A4D" opacity="0.6" r="2"></circle>
+                  <circle cx="80" cy="115" fill="#494A4D" opacity="0.6" r="2"></circle>
+                  <circle cx="100" cy="100" opacity="0.4" r="45" stroke="#FD5638" stroke-dasharray="2 4" stroke-width="1"></circle>
+                </svg>

@@ -1,0 +1,16 @@
+SERRA RESEARCH / CHECKLIST DE PRÉ-IMPRESSÃO / PREPRESS CHECKLIST
+
+1. Confirmar logotipo atual: Serra 600, Research 400 e ponto coral.
+2. Substituir placeholders; conferir autoria, contatos, data e versão.
+3. Conferir formato, margens e orientação de cada peça.
+4. Definir substrato, gramatura, acabamento e tiragem com a gráfica.
+5. Definir perfil ICC e conversão CMYK ou cor especial; aprovar prova física.
+6. Confirmar sangria, marcas de corte, dobra e faca para a peça escolhida.
+7. Conferir fontes, imagens, espessura de traços e legibilidade.
+8. Validar nomes, identificadores, links e dados pessoais antes de imprimir.
+9. Solicitar PDF/X adequado ao fluxo da gráfica, se exigido.
+10. Aprovar protótipo de envelope, pasta, caixa e credencial.
+
+Os arquivos deste kit são protótipos editáveis em sRGB, com fontes locais incorporadas. Não são PDF/X nem incluem perfis ICC, homologação, assinaturas, credenciais válidas ou faca industrial. SVGs/PDFs têm dimensão nominal de corte; sangria e marcas precisam ser adicionadas no preparo final. As peças não são laudos executados.
+
+EN: Verify existing logo and content; confirm dimensions and materials; agree on ICC/CMYK/spot-color workflow; add bleed and trim guides; review fonts and personal data; approve physical proofs; prepare the printer's required PDF/X. Files are editable sRGB prototypes at trim size, not certified production artwork.

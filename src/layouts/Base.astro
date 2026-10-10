@@ -9,8 +9,8 @@ import Footer from '../components/Footer.astro';
 import Preferences from '../components/Preferences.astro';
 import {pick,type Locale} from '../i18n';
 import {path,origin,company,email} from '../lib/site';
-interface Props {lang:Locale; title:string; description:string; alternate:string; landing?:boolean; noindex?:boolean; article?:Record<string,unknown>; hasTranslation?:boolean; citations?:{name:string;content:string}[];}
-const {lang,title,description,alternate,landing=false,noindex=false,article,hasTranslation=true,citations=[]}=Astro.props;
+interface Props {lang:Locale; title:string; description:string; alternate:string; landing?:boolean; noindex?:boolean; article?:Record<string,unknown>; hasTranslation?:boolean; citations?:{name:string;content:string}[]; documentation?:{id:string;label:string}[];}
+const {lang,title,description,alternate,landing=false,noindex=false,article,hasTranslation=true,citations=[],documentation}=Astro.props;
 const canonical=new URL(Astro.url.pathname,origin).href;
 const absolute=(url:string)=>new URL(url,origin).href;
 const organization={'@context':'https://schema.org','@type':'Organization',name:company.name,legalName:company.legalName,url:absolute(path()),email,address:{'@type':'PostalAddress',streetAddress:'R. Dr. Renato Paes de Barros, 33 — Itaim Bibi',addressLocality:'São Paulo',addressRegion:'SP',postalCode:'04530-000',addressCountry:'BR'}};
@@ -27,7 +27,7 @@ const organization={'@context':'https://schema.org','@type':'Organization',name:
  <script type="application/ld+json" set:html={JSON.stringify(article?{'@context':'https://schema.org',...article}:organization).replace(/</g,'\\u003c')}/>
 </head><body data-lang={lang}>
  <a class="skip-link" href="#conteudo">{pick(lang,'Pular para o conteúdo','Skip to content')}</a>
- <Sidebar lang={lang} alternate={alternate} landing={landing}/>
+ <Sidebar lang={lang} alternate={alternate} landing={landing} documentation={documentation}/>
  <div class="site-content"><slot/><Footer lang={lang}/></div>
  <Preferences lang={lang}/>
  <script>import '../scripts/site';</script>

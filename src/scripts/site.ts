@@ -51,7 +51,8 @@ document.querySelectorAll<HTMLDialogElement>('dialog').forEach(dialog=>{
 // Keep keyboard focus at the destination of in-page navigation.
 document.querySelectorAll<HTMLAnchorElement>('a[href*="#"]').forEach(a=>a.addEventListener('click',()=>{const url=new URL(a.href);if(url.pathname!==location.pathname||!url.hash)return;const target=document.getElementById(url.hash.slice(1));if(target){target.tabIndex=-1;target.focus({preventScroll:true});}}));
 const nav=document.querySelector('#navigation')!;
-const sections=Array.from(document.querySelectorAll<HTMLElement>('section[id]:not(#inicio),#dados'));
+const destinations=new Set(Array.from(nav.querySelectorAll('a')).map(a=>a.getAttribute('href')));
+const sections=Array.from(document.querySelectorAll<HTMLElement>('section[id]:not(#inicio),#dados')).filter(section=>destinations.has(`#${section.id}`));
 let frame=false;
 function updateNav(){let active='';for(const section of sections)if(section.getBoundingClientRect().top<=Math.min(innerHeight*.28,200))active=section.id;nav.querySelectorAll('a').forEach(a=>{if(a.getAttribute('href')===`#${active}`)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}
 window.addEventListener('scroll',()=>{if(frame)return;frame=true;requestAnimationFrame(()=>{updateNav();frame=false;});},{passive:true});window.addEventListener('resize',updateNav);updateNav();

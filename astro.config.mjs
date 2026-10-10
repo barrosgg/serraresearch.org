@@ -12,6 +12,6 @@ export default defineConfig({
     const pair=pairs.find(p=>p.some(route=>root+route===item.url));
     if(pair)item.links=[{lang:'pt-BR',url:root+pair[0]},{lang:'en',url:root+pair[1]}];
     return item;
-  },filter: page => !page.includes('/modelo/') && !page.includes('/template/') && !page.includes('/demo-') && !page.includes('/editor/') && !page.includes('/404/'), i18n: {defaultLocale:'pt', locales:{pt:'pt-BR',en:'en'}}})],
+  },filter: page => !page.includes('/modelo/') && !page.includes('/template/') && !page.includes('/demo-') && !page.includes('/editor/') && !page.includes('/404/') && !page.includes('/design/'), i18n: {defaultLocale:'pt', locales:{pt:'pt-BR',en:'en'}}})],
   vite: {build: {assetsInlineLimit: 0}},
 });

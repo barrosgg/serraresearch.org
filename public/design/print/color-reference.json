@@ -1,0 +1,76 @@
+{
+  "space": "sRGB",
+  "cmyk": "mathematical approximation without ICC profile",
+  "colors": [
+    {
+      "hex": "#fd5638",
+      "rgb": [
+        253,
+        86,
+        56
+      ],
+      "cmykPercent": [
+        0,
+        66,
+        78,
+        1
+      ]
+    },
+    {
+      "hex": "#2e2e2e",
+      "rgb": [
+        46,
+        46,
+        46
+      ],
+      "cmykPercent": [
+        0,
+        0,
+        0,
+        82
+      ]
+    },
+    {
+      "hex": "#494a4d",
+      "rgb": [
+        73,
+        74,
+        77
+      ],
+      "cmykPercent": [
+        5,
+        4,
+        0,
+        70
+      ]
+    },
+    {
+      "hex": "#f4f5f8",
+      "rgb": [
+        244,
+        245,
+        248
+      ],
+      "cmykPercent": [
+        2,
+        1,
+        0,
+        3
+      ]
+    },
+    {
+      "hex": "#0057ff",
+      "rgb": [
+        0,
+        87,
+        255
+      ],
+      "cmykPercent": [
+        100,
+        66,
+        0,
+        0
+      ]
+    }
+  ]
+}

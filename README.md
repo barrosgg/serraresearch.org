@@ -29,7 +29,7 @@ No ambiente cloud, use o checkout existente: cada tarefa já é isolada e não p
 
 - `src/lib/landing.ts`: conteúdo institucional e diagramas renderizados no servidor.
 - `src/lib/service-research.ts`: dossiês bilíngues das quatro áreas, tecnologias, licenças e fontes de dados.
-- `src/components/DesignSystem.astro` e `src/lib/design-system.ts`: documentação visual bilíngue e tokens exportáveis.
+- `src/components/DesignSystem.astro`, `DesignResearchModules.astro` e `DesignPrintModules.astro`: documentação visual bilíngue com 17 capítulos, ilustrações, diagramas, gráficos, cartografia e papelaria; tokens em `src/lib/design-system.ts`. Consulte [docs/design-system.md](docs/design-system.md) para arquivos editáveis e manutenção.
 - `src/components/ServiceDetails.astro`: templates estáticos dos modais; os detalhes são inseridos no diálogo ao abrir cada área.
 - `src/i18n/`: equivalentes de conteúdo em inglês e rótulos de navegação.
 - `src/lib/site.ts`: contato, dados da empresa, caminhos e links bilíngues.

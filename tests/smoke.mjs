@@ -187,12 +187,29 @@ for(const route of routeNames){
   await page.locator('a[href="#publication-details"]').click();assert.equal(new URL(page.url()).hash,'#publication-details');
  }
  if(route.includes('design-system')){
-  assert.equal(await page.locator('.ds-toc a').count(),12);assert.equal(await page.locator('.ds-section').count(),12);
+  assert.equal(await page.locator('.ds-toc a').count(),17);assert.equal(await page.locator('.ds-section').count(),17);
+  assert.equal(await page.locator('.sidebar-docs #navigation a').count(),17);assert.equal(await page.locator('.ds-illustration-stage img').count(),5);assert.equal(await page.locator('.ds-chart').count(),4);assert.equal(await page.locator('.ds-stationery .wordmark').count(),3);
   const tokens=await (await fetch('http://127.0.0.1:5174/serraresearch.org/design-tokens.json')).json();
   for(const [key,variable] of [['actionOrange','--action-orange'],['buttonInk','--button-ink'],['dataBlue','--data-blue'],['muted','--muted'],['charcoal','--charcoal']])assert.equal(await page.evaluate(v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim(),variable),tokens.colors[key]);
   assert.match(await page.locator('#cores').innerText(),/4\.5:1|4,5:1/);
   assert.equal(await page.locator('#ds-invalid').getAttribute('aria-describedby'),'ds-email-error');
   await page.locator('.ds-disclosure summary').click();assert.equal(await page.locator('.ds-disclosure').evaluate(el=>el.open),true);
+  const logoStyles=await page.locator('.sidebar-brand').evaluate(el=>({name:el.textContent.trim(),serra:getComputedStyle(el).fontWeight,research:getComputedStyle(el.querySelector('span')).fontWeight,dot:getComputedStyle(el.querySelector('i')).backgroundColor}));assert.deepEqual(logoStyles,{name:'Serra Research',serra:'600',research:'400',dot:'rgb(253, 86, 56)'});
+  await page.locator('#navigation a[href="#cartografia"]').click();assert.equal(new URL(page.url()).hash,'#cartografia');
+  const layer=page.locator('[data-map-layer="parcels"]');await layer.click();assert.equal(await layer.getAttribute('aria-pressed'),'false');assert.equal(await page.locator('[data-map-feature="parcels"]').isVisible(),false);await layer.focus();await page.keyboard.press('Enter');assert.equal(await layer.getAttribute('aria-pressed'),'true');
+  await page.locator('[data-map-zoom="in"]').click();assert.match(await page.locator('#ds-map-features').getAttribute('transform'),/scale\(1.25\)/);await page.locator('[data-map-zoom="out"]').click();assert.equal(await page.locator('[data-map-zoom="out"]').isDisabled(),true);
+  for(const summary of await page.locator('.ds-data-details summary').all())await summary.click();
+  const google=await(await fetch('http://127.0.0.1:5174/serraresearch.org/design/google-maps-style.json')).json();assert.ok(Array.isArray(google)&&google.every(row=>Array.isArray(row.stylers)));
+  const maplibre=await(await fetch('http://127.0.0.1:5174/serraresearch.org/design/maplibre-style.json')).json();assert.equal(maplibre.version,8);assert.equal(maplibre.sources.territories.data.features[0].properties.demo,true);assert.ok(maplibre.layers.every(layer=>layer.type==='background'||maplibre.sources[layer.source]));
+  const csv=await(await fetch('http://127.0.0.1:5174/serraresearch.org/design/synthetic-data.csv')).text();assert.match(csv,/Synthetic design examples/);assert.match(csv,/"temporal","1","illustrative","62","58","66"/);
+  assert.equal(await page.locator('.ds-print-detail').count(),7);assert.equal(await page.locator('.ds-print-toc a').count(),7);
+  await page.locator('.ds-print-toc a[href="#print-cartoes"]').click();await page.waitForFunction(()=>Math.abs(document.querySelector('#print-cartoes').getBoundingClientRect().top)<250);await page.waitForTimeout(100);
+  assert.equal(await page.locator('#navigation a[aria-current="location"]').getAttribute('href'),'#papelaria');
+  await page.emulateMedia({reducedMotion:'no-preference'});assert.equal(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior),'smooth');
+  await page.emulateMedia({reducedMotion:'reduce'});assert.equal(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior),'auto');
+  const pdf=Buffer.from(await(await fetch('http://127.0.0.1:5174/serraresearch.org/design/print/letterhead.pdf')).arrayBuffer());assert.equal(pdf.subarray(0,5).toString(),'%PDF-');
+  const kit=Buffer.from(await(await fetch('http://127.0.0.1:5174/serraresearch.org/design/print/serra-stationery-kit.zip')).arrayBuffer());assert.equal(kit.readUInt32LE(0),0x04034b50);assert.ok(kit.length>1000);
+  await page.locator('.ds-document-end a').click();assert.equal(new URL(page.url()).hash,'#design-top');assert.equal(await page.evaluate(()=>document.activeElement.id),'design-top');
   await page.screenshot({path:`test-results/design-system-${lang}.png`,fullPage:true});
  }
  const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();pageAxe.push({route,violations:result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))});
