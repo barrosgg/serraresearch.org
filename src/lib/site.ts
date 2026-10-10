@@ -10,6 +10,7 @@ export const routes = {
  privacy: {pt:'privacidade',en:'en/privacy'},
  cookies: {pt:'cookies',en:'en/cookies'},
  accessibility: {pt:'acessibilidade',en:'en/accessibility'},
+ designSystem: {pt:'design-system',en:'en/design-system'},
  template: {pt:'publicacoes/modelo',en:'en/publications/template'},
 } as const;
 export const link = (key:keyof typeof routes,lang:Locale) => path(routes[key][lang]);

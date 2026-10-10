@@ -166,7 +166,7 @@ for(const width of [320,390]){
 }
 const mobileAxe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
 const pageAxe=[];
-const routeNames=['en/','privacidade/','cookies/','acessibilidade/','publicacoes/','publicacoes/modelo/','en/privacy/','en/cookies/','en/accessibility/','en/publications/','en/publications/template/'];
+const routeNames=['en/','privacidade/','cookies/','acessibilidade/','publicacoes/','publicacoes/modelo/','en/privacy/','en/cookies/','en/accessibility/','en/publications/','en/publications/template/','design-system/','en/design-system/'];
 for(const route of routeNames){
  await page.setViewportSize({width:1440,height:1000});
  const response=await page.goto(`http://127.0.0.1:5174/serraresearch.org/${route}`,{waitUntil:'networkidle'});
@@ -181,9 +181,30 @@ for(const route of routeNames){
   if(href.startsWith('#')){assert.ok(await page.locator(`[id="${href.slice(1)}"]`).count(),`Missing anchor ${href} on ${route}`);}
   else if(href.startsWith('/serraresearch.org/')){const target=new URL(href,'http://127.0.0.1:5174');const result=await fetch(target);assert.equal(result.status,200,`Broken link ${href}`);}
  }
- if(route.includes('modelo')||route.includes('template'))assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex,follow');
+ if(route.includes('modelo')||route.includes('template')){
+  assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex,follow');assert.equal(await page.locator('.publication-breadcrumbs li').count(),3);assert.equal(await page.locator('.publication-editorial-guide dt').count(),6);assert.equal(await page.locator('meta[name="citation_title"]').count(),0);
+  await page.locator('a[href="#publication-details"]').click();assert.equal(new URL(page.url()).hash,'#publication-details');
+ }
+ if(route.includes('design-system')){
+  assert.equal(await page.locator('.ds-toc a').count(),12);assert.equal(await page.locator('.ds-section').count(),12);
+  const tokens=await (await fetch('http://127.0.0.1:5174/serraresearch.org/design-tokens.json')).json();
+  for(const [key,variable] of [['actionOrange','--action-orange'],['buttonInk','--button-ink'],['dataBlue','--data-blue'],['muted','--muted'],['charcoal','--charcoal']])assert.equal(await page.evaluate(v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim(),variable),tokens.colors[key]);
+  assert.match(await page.locator('#cores').innerText(),/4\.5:1|4,5:1/);
+  assert.equal(await page.locator('#ds-invalid').getAttribute('aria-describedby'),'ds-email-error');
+  await page.locator('.ds-disclosure summary').click();assert.equal(await page.locator('.ds-disclosure').evaluate(el=>el.open),true);
+  await page.screenshot({path:`test-results/design-system-${lang}.png`,fullPage:true});
+ }
  const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();pageAxe.push({route,violations:result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))});
- for(const width of [320,390]){await page.setViewportSize({width,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Overflow ${route} at ${width}`);}
+ for(const width of [320,390]){
+  await page.setViewportSize({width,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Overflow ${route} at ${width}`);
+  if(route.includes('design-system'))assert.ok(await page.evaluate(()=>document.querySelector('.ds-toc').getBoundingClientRect().top>=document.querySelector('.ds-hero').getBoundingClientRect().bottom),'Design system contents must follow the hero without overlapping it');
+ }
+ if(route.includes('design-system')){
+  await page.evaluate(()=>document.documentElement.style.setProperty('--text-scale','1.3'));await page.setViewportSize({width:320,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Design system overflow at 130% on ${route}`);
+  await page.screenshot({path:`test-results/design-system-mobile-${lang}.png`});
+  await page.evaluate(()=>{document.documentElement.style.removeProperty('--text-scale');document.documentElement.classList.add('high-contrast');});await page.setViewportSize({width:1440,height:1000});
+  const highContrast=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();pageAxe.push({route:`${route} high contrast`,violations:highContrast.violations});
+ }
 }
 await page.goto('http://127.0.0.1:5174/serraresearch.org/en/',{waitUntil:'networkidle'});
 await page.setViewportSize({width:1440,height:1000});

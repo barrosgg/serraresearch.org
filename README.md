@@ -29,6 +29,7 @@ No ambiente cloud, use o checkout existente: cada tarefa já é isolada e não p
 
 - `src/lib/landing.ts`: conteúdo institucional e diagramas renderizados no servidor.
 - `src/lib/service-research.ts`: dossiês bilíngues das quatro áreas, tecnologias, licenças e fontes de dados.
+- `src/components/DesignSystem.astro` e `src/lib/design-system.ts`: documentação visual bilíngue e tokens exportáveis.
 - `src/components/ServiceDetails.astro`: templates estáticos dos modais; os detalhes são inseridos no diálogo ao abrir cada área.
 - `src/i18n/`: equivalentes de conteúdo em inglês e rótulos de navegação.
 - `src/lib/site.ts`: contato, dados da empresa, caminhos e links bilíngues.
@@ -43,16 +44,21 @@ Astro é o framework do site, não um painel de administração. As **Content Co
 
 Cada modal de atuação reúne stack aberta/proprietária, dados secundários, coleta primária possível, plataformas e indicadores de impacto. As ferramentas são opções de arquitetura, e não uma declaração de uso em todos os projetos. A pesquisa e seus limites estão registrados em [docs/service-research.md](docs/service-research.md). Ao atualizar os dossiês, revise traduções, licenças, disponibilidade das fontes e condições de divulgação; mantenha todos esses detalhes dentro do modal.
 
+O design system público fica em `/design-system/` e `/en/design-system/`, com link no rodapé. Documenta identidade, cores/contraste, tipografia, layout, espaçamento, formas, botões/estados, cards, campos, ícones/gráficos, interação, acessibilidade e manutenção. Os tokens podem ser baixados em `/design-tokens.json`. Os exemplos reutilizam classes reais da interface; os valores documentados devem ser atualizados junto com o CSS. Campos demonstrativos não enviam nem persistem dados.
+
 ## Publicar uma pesquisa ou whitepaper
 
 1. Copie `templates/publicacao.pt.md` para `src/content/publications/nome-da-pesquisa.pt.md`. Para inglês, use `templates/publication.en.md`.
 2. Substitua os textos demonstrativos por conteúdo revisado. Preencha título, descrição (máximo 180 caracteres), idioma (`pt` ou `en`), slug exclusivo no idioma, data, autores, tipo, temas e resumo. Use a mesma `translationKey` nas traduções.
+   Autores podem ser nomes simples ou objetos com `name`, `affiliations` na época da publicação, `orcid` e `url`. Campos opcionais documentados nos templates incluem veículo/evento, estado, revisão, versão, recursos e transparência científica. Consulte [docs/publication-metadata.md](docs/publication-metadata.md) para a comparação com a referência IBM e orientações de preenchimento.
 3. Use `##` para as seções que entram automaticamente no sumário. Adicione métodos, fontes, resultados, limitações e referências. Imagens precisam de descrição alternativa; gráficos com dados precisam de fonte, unidades e equivalente textual ou tabela acessível.
 4. Se existir PDF real, coloque-o em `public/publications/` e configure `pdf: /publications/arquivo.pdf`. Verifique sua acessibilidade. `doi` é opcional e deve conter um identificador real, como `10.xxxx/xxxxx`.
 5. Mantenha `draft: true` durante a revisão. Rascunhos comuns não geram páginas públicas nem aparecem na biblioteca ou na landing page. Defina `draft: false` para publicar.
 6. Execute build e testes; faça commit e push para `main`. O workflow publica somente após os testes passarem. A entrada aparece automaticamente na landing e na biblioteca do idioma, com seu próprio permalink, sumário, resumo e citação.
 
 Os modelos especiais `model-pt.md` e `model-en.md` têm `translationKey: editorial-template` e são exibidos explicitamente como exemplos em `/publicacoes/modelo/` e `/en/publications/template/`. Continuam em rascunho, têm `noindex` e são excluídos do sitemap. Não apresentam resultados ou métricas fictícias. Para uma publicação real, use outra `translationKey` e slugs que não sejam `modelo` ou `template`.
+
+Publicações reais incluem ficha científica, recursos opcionais, citação e exportação BibTeX; `citation_*` e JSON-LD usam apenas dados fornecidos. A seção de relacionadas prioriza `related` (chaves de tradução), depois temas em comum, exibindo até três entradas públicas no mesmo idioma. Estado de publicação e revisão por pares são campos distintos e nunca deduzidos de `draft: false`.
 
 Quando não houver tradução de uma pesquisa, o seletor de idioma leva à biblioteca do outro idioma; não declara essa biblioteca como tradução no `hreflang`.
 

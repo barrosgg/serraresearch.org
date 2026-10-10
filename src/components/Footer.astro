@@ -1,6 +1,7 @@
 ---
 import {pick,navLabels,type Locale} from '../i18n';
 import {home,link,sections,email,company} from '../lib/site';
+import {northeast} from '../lib/visuals';
 const {lang}=Astro.props as {lang:Locale};
 const p=(pt:string,en:string)=>pick(lang,pt,en);
 ---
@@ -11,5 +12,5 @@ const p=(pt:string,en:string)=>pick(lang,pt,en);
   <div class="footer-links"><h2>{p('Transparência','Transparency')}</h2><a href={link('privacy',lang)}>{p('Política de privacidade','Privacy policy')}</a><a href={link('cookies',lang)}>{p('Cookies e armazenamento','Cookies and storage')}</a><button class="footer-button" data-open="privacy-dialog">{p('Preferências de privacidade','Privacy preferences')}</button><a href={link('accessibility',lang)}>{p('Declaração de acessibilidade','Accessibility statement')}</a><button class="footer-button" data-open="accessibility-dialog">{p('Ajustar acessibilidade','Accessibility settings')}</button></div>
  </div>
  <div class="company-details"><strong>{company.legalName}</strong><address>{company.location}</address><span>{p('CNPJ provisório','Provisional registration number')}: {company.taxId}</span></div>
- <div class="footer-bottom"><span>© {new Date().getFullYear()} Serra Research</span><span class="mono">{p('CIÊNCIA · DIREITOS HUMANOS · SUSTENTABILIDADE','SCIENCE · HUMAN RIGHTS · SUSTAINABILITY')}</span><a class="text-link" href="#conteudo">{p('Voltar ao topo','Back to top')} ↑</a></div>
+ <div class="footer-bottom"><span>© {new Date().getFullYear()} Serra Research</span><span class="mono">{p('CIÊNCIA · DIREITOS HUMANOS · SUSTENTABILIDADE','SCIENCE · HUMAN RIGHTS · SUSTAINABILITY')}</span><a class="text-link" href={link('designSystem',lang)}>Design system<Fragment set:html={northeast}/></a><a class="text-link" href="#conteudo">{p('Voltar ao topo','Back to top')} ↑</a></div>
 </div></footer>

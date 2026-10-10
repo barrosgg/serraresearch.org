@@ -9,8 +9,8 @@ import Footer from '../components/Footer.astro';
 import Preferences from '../components/Preferences.astro';
 import {pick,type Locale} from '../i18n';
 import {path,origin,company,email} from '../lib/site';
-interface Props {lang:Locale; title:string; description:string; alternate:string; landing?:boolean; noindex?:boolean; article?:Record<string,unknown>; hasTranslation?:boolean;}
-const {lang,title,description,alternate,landing=false,noindex=false,article,hasTranslation=true}=Astro.props;
+interface Props {lang:Locale; title:string; description:string; alternate:string; landing?:boolean; noindex?:boolean; article?:Record<string,unknown>; hasTranslation?:boolean; citations?:{name:string;content:string}[];}
+const {lang,title,description,alternate,landing=false,noindex=false,article,hasTranslation=true,citations=[]}=Astro.props;
 const canonical=new URL(Astro.url.pathname,origin).href;
 const absolute=(url:string)=>new URL(url,origin).href;
 const organization={'@context':'https://schema.org','@type':'Organization',name:company.name,legalName:company.legalName,url:absolute(path()),email,address:{'@type':'PostalAddress',streetAddress:'R. Dr. Renato Paes de Barros, 33 — Itaim Bibi',addressLocality:'São Paulo',addressRegion:'SP',postalCode:'04530-000',addressCountry:'BR'}};
@@ -21,6 +21,7 @@ const organization={'@context':'https://schema.org','@type':'Organization',name:
  <link rel="canonical" href={canonical}/><link rel="alternate" hreflang={lang==='pt'?'pt-BR':'en'} href={canonical}/>{hasTranslation&&<link rel="alternate" hreflang={lang==='pt'?'en':'pt-BR'} href={absolute(alternate)}/>}<link rel="alternate" hreflang="x-default" href={lang==='pt'||!hasTranslation?canonical:absolute(alternate)}/>
  <meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:type" content={article?'article':'website'}/><meta property="og:site_name" content="Serra Research"/><meta property="og:url" content={canonical}/><meta property="og:locale" content={lang==='pt'?'pt_BR':'en_US'}/><meta property="og:image" content={absolute(path('social-preview.png').replace(/\/$/,''))}/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:alt" content={pick(lang,'Serra Research — inteligência e ciência de dados para impacto social.','Serra Research — intelligence and data science for social impact.')}/>
  <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content={absolute(path('social-preview.png').replace(/\/$/,''))}/>
+ {citations.map(({name,content})=><meta name={name} content={content}/>)}
  <link rel="icon" type="image/svg+xml" href={path('favicon.svg').replace(/\/$/,'')}/><link rel="sitemap" href={path('sitemap-index.xml').replace(/\/$/,'')}/>
  <noscript><style>.menu-toggle,.sidebar-close,[data-open],.service-more,.flow-tabs,#share-publication{display:none!important}@media(max-width:1100px){.sidebar{position:static;transform:none;width:100%;max-width:none;height:auto;box-shadow:none}.sidebar-brand,.sidebar-label,.sidebar-bottom{display:none}.sidebar #navigation{display:flex;flex-direction:row;flex-wrap:wrap;gap:5px}.sidebar #navigation a{font-size:12px;min-height:44px}.sidebar #navigation .nav-number,.sidebar #navigation .nav-arrow{display:none}}</style></noscript>
  <script type="application/ld+json" set:html={JSON.stringify(article?{'@context':'https://schema.org',...article}:organization).replace(/</g,'\\u003c')}/>

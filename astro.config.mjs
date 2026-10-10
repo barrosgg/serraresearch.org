@@ -7,7 +7,7 @@ export default defineConfig({
   output: 'static',
   devToolbar: {enabled:false},
   integrations: [sitemap({serialize(item){
-    const pairs=[['','en/'],['privacidade/','en/privacy/'],['cookies/','en/cookies/'],['acessibilidade/','en/accessibility/'],['publicacoes/','en/publications/']];
+    const pairs=[['','en/'],['privacidade/','en/privacy/'],['cookies/','en/cookies/'],['acessibilidade/','en/accessibility/'],['publicacoes/','en/publications/'],['design-system/','en/design-system/']];
     const root='https://barrosgg.github.io/serraresearch.org/';
     const pair=pairs.find(p=>p.some(route=>root+route===item.url));
     if(pair)item.links=[{lang:'pt-BR',url:root+pair[0]},{lang:'en',url:root+pair[1]}];

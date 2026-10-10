@@ -13,6 +13,36 @@ tags:
   - Open research
 abstract: "This template guides the organization of a publication. Replace demonstration text with reviewed content and verified sources before publishing research. This example contains no empirical data, attributed scientific authorship or impact metrics."
 draft: true
+# Optional fields: uncomment only after entering real information.
+# authors also accepts objects: name, affiliations (at publication time), orcid and url.
+# venue:
+#   name: "Journal, event or series name"
+#   kind: conference # conference, journal, workshop, series, institution
+#   url: "https://..."
+#   volume: "..."
+#   issue: "..."
+#   pages: "..."
+#   issn: "..."
+# publicationStatus: working-paper # working-paper, preprint, accepted, published
+# reviewStatus: not-peer-reviewed # not-peer-reviewed, editorial-review, peer-reviewed
+# version: "..."
+# reportNumber: "..."
+# publicationUrl: "https://..."
+# publisher: "Confirmed publisher or institution"
+# pdf: /publications/actual-file.pdf
+# doi: "10.xxxx/actual-identifier"
+# resources:
+#   - kind: code # code, dataset, supplement, slides, video, project, preprint
+#     label: "Actual material name"
+#     url: "https://..."
+# license:
+#   name: "Confirmed license"
+#   url: "https://..."
+# funding: ["Confirmed funders and grant identifiers"]
+# conflicts: "Reviewed conflict-of-interest statement"
+# ethics: "Ethics approval and participant protection, where applicable"
+# dataAvailability: "Where data can be accessed, conditions or reasons for restrictions"
+# related: ["translationKey-of-another-actual-publication"]
 ---
 ## Research question and context
 

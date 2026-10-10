@@ -13,6 +13,36 @@ tags:
   - Pesquisa aberta
 abstract: "Este modelo orienta a organização de uma publicação. Substitua os textos demonstrativos por conteúdo revisado e fontes verificadas antes de publicar uma pesquisa. Não há dados empíricos, autoria científica atribuída ou métricas de impacto neste exemplo."
 draft: true
+# Campos opcionais: remova os comentários apenas após preencher dados reais.
+# authors também aceita objetos: name, affiliations (na época), orcid e url.
+# venue:
+#   name: "Nome do periódico, evento ou série"
+#   kind: conference # conference, journal, workshop, series, institution
+#   url: "https://..."
+#   volume: "..."
+#   issue: "..."
+#   pages: "..."
+#   issn: "..."
+# publicationStatus: working-paper # working-paper, preprint, accepted, published
+# reviewStatus: not-peer-reviewed # not-peer-reviewed, editorial-review, peer-reviewed
+# version: "..."
+# reportNumber: "..."
+# publicationUrl: "https://..."
+# publisher: "Editora ou instituição responsável confirmada"
+# pdf: /publications/arquivo-real.pdf
+# doi: "10.xxxx/identificador-real"
+# resources:
+#   - kind: code # code, dataset, supplement, slides, video, project, preprint
+#     label: "Nome do material real"
+#     url: "https://..."
+# license:
+#   name: "Licença confirmada"
+#   url: "https://..."
+# funding: ["Financiadores e identificadores de apoio confirmados"]
+# conflicts: "Declaração revisada de conflitos de interesse"
+# ethics: "Aprovação ética e proteção de participantes, quando aplicável"
+# dataAvailability: "Onde acessar dados, sob quais condições ou por que há restrições"
+# related: ["translationKey-de-outra-publicacao-real"]
 ---
 ## Pergunta e contexto
 
