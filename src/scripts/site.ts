@@ -1,4 +1,4 @@
-import { arrow,icon,renderFlowMarkup } from '../lib/visuals';
+import { renderFlowMarkup } from '../lib/visuals';
 const en=document.body.dataset.lang==='en';
 const t=(pt:string,english:string)=>en?english:pt;
 const storage={get(key:string){try{return localStorage.getItem(key);}catch{return null;}},set(key:string,value:string){try{localStorage.setItem(key,value);return true;}catch{return false;}},remove(key:string){try{localStorage.removeItem(key);}catch{}}};
@@ -58,15 +58,17 @@ window.addEventListener('scroll',()=>{if(frame)return;frame=true;requestAnimatio
 
 const configElement=document.querySelector('#landing-data');
 if(configElement){
- const config=JSON.parse(configElement.textContent!) as {services:{name:string;code:string;icon:string;full:string;items:string[]}[];flows:Parameters<typeof renderFlowMarkup>[0][]};
+ const config=JSON.parse(configElement.textContent!) as {services:{name:string}[];flows:Parameters<typeof renderFlowMarkup>[0][]};
  document.querySelectorAll<HTMLButtonElement>('[data-service],[data-flow]').forEach(button=>button.disabled=false);
  const interest=document.querySelector<HTMLSelectElement>('select[name="interest"]')!;
  const detail=document.querySelector<HTMLDialogElement>('#detail-dialog')!;
  document.querySelectorAll<HTMLButtonElement>('[data-service]').forEach(button=>button.addEventListener('click',()=>{
   const s=config.services[Number(button.dataset.service)];dialogOpener=button;
-  document.querySelector('#dialog-content')!.innerHTML=`<span class="eyebrow">${s.code} / ${t('ÁREA DE ATUAÇÃO','EXPERTISE')}</span><span class="dialog-icon">${icon(s.icon)}</span><h2 id="dialog-title">${s.name}</h2><p>${s.full}</p><h3>${t('Como podemos apoiar','How we can help')}</h3><ul>${s.items.map(item=>`<li>${icon('check')}<span>${item}</span></li>`).join('')}</ul><a id="dialog-contact" class="button" href="#contato">${t('Converse sobre seu projeto','Discuss your project')} ${arrow}</a>`;
-  detail.showModal();document.body.classList.add('dialog-open');
-  document.querySelector('#dialog-contact')!.addEventListener('click',()=>{interest.value=s.name;detail.close();document.querySelector<HTMLElement>('#contato')!.focus({preventScroll:true});});
+  const content=document.querySelector<HTMLElement>('#dialog-content')!;
+  const template=document.querySelector<HTMLTemplateElement>(`[data-service-template="${button.dataset.service}"]`)!;
+  content.replaceChildren(template.content.cloneNode(true));content.scrollTop=0;
+  detail.showModal();document.body.classList.add('dialog-open');content.querySelector<HTMLElement>('#dialog-title')!.focus({preventScroll:true});
+  document.querySelector('#dialog-contact')!.addEventListener('click',()=>{interest.value=s.name;dialogOpener=null;detail.close();const target=document.querySelector<HTMLElement>('#contato')!;target.tabIndex=-1;target.focus({preventScroll:true});});
  }));
  document.querySelectorAll<HTMLAnchorElement>('[data-interest]').forEach(a=>a.addEventListener('click',()=>{interest.value=a.dataset.interest!;}));
  const tabs=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-flow]'));

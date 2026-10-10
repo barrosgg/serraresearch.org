@@ -22,8 +22,9 @@ const flows = [
   { icon: 'data', title: 'Inteligência com fontes confiáveis', source: 'DOCUMENTOS · OCR · EMBEDDINGS', processing: 'Engenharia de dados + MCP', result: 'Dados estruturados e bancos vetoriais conectados a LLMs para análise e decisão.' },
 ];
 
+export function getServices(lang:Locale):typeof services {return JSON.parse(localize(JSON.stringify(services),lang));}
 export function getClientData(lang: Locale) {
- return {lang, services: JSON.parse(localize(JSON.stringify(services),lang)), flows: JSON.parse(localize(JSON.stringify(flows),lang))};
+ return {lang, services: getServices(lang).map(({name})=>({name})), flows: JSON.parse(localize(JSON.stringify(flows),lang))};
 }
 export function landingStart(lang: Locale) {
  return localize(`
@@ -33,7 +34,7 @@ export function landingStart(lang: Locale) {
         <div class="eyebrow"><span class="status-dot"></span> PESQUISA APLICADA. IMPACTO REAL.</div>
         <h1 id="hero-title">Inteligência e ciência de dados para <span>impacto social.</span></h1>
         <p class="hero-lead">A Serra Research combina pesquisa aplicada, sensoriamento geoespacial, preparação de dados para Inteligência Artificial e radares preditivos legislativos para impulsionar a agenda de sustentabilidade, direitos humanos e governança regulatória.</p>
-        <div class="hero-actions"><a class="button" href="#atuacao">Conheça nossa atuação ${arrow}</a><a class="text-link" href="#metodologia">Nosso método ${northeast}</a></div>
+        <div class="hero-actions"><a class="button" href="#atuacao">Conheça nossa atuação ${arrow}</a><a class="button button-blue" href="#metodologia">Nosso método ${northeast}</a></div>
       </div>
       <div class="hero-visual" role="img" aria-label="Representação conceitual de camadas de dados conectadas">
         <div class="visual-top mono"><span>SERRA / RESEARCH LAB</span><span>01 — 04</span></div>

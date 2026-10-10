@@ -48,13 +48,31 @@ await page.keyboard.press('Tab');
 await page.locator('.skip-link').focus();await page.keyboard.press('Enter');assert.equal(await page.locator('main').evaluate(el=>el===document.activeElement),true);
 const desktopAxe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
 
+const serviceDialogAxe=[];
+assert.equal(await page.locator('.hero-actions .button-blue').innerText(),'Nosso método');
+assert.equal(await page.locator('.hero-actions .button-blue').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(0, 87, 255)');
+assert.equal(await page.locator('.hero-actions .button').first().evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(255, 137, 107)');
 for (let i = 0; i < 4; i++) {
   await page.locator(`[data-service="${i}"]`).click();
   await page.locator('#detail-dialog').waitFor({ state: 'visible' });
-  assert.equal(await page.locator('#detail-dialog li').count(), 3);
+  assert.equal(await page.locator('#detail-dialog .service-support-list li').count(), 3);
+  assert.equal(await page.locator('#detail-dialog .service-detail-section').count(),5);
+  for(const id of ['service-stack-title','service-secondary-title','service-primary-title','service-platforms-title','service-impact-title'])assert.equal(await page.locator(`#detail-dialog #${id}`).isVisible(),true);
+  assert.equal(await page.locator('#detail-dialog .stack-group').count(),2);
+  assert.ok(await page.locator('#detail-dialog .source-tags a').count()>=8);
+  assert.ok(await page.locator('#detail-dialog .service-detail-list li').count()>=10);
+  assert.ok((await page.locator('#detail-dialog').boundingBox()).width>=900,'Service dialog should be wider on desktop');
+  await page.locator('#detail-dialog .service-references summary').click();
+  assert.equal(await page.locator('#detail-dialog .service-references').evaluate(el=>el.open),true);
+  const links=await page.locator('#detail-dialog a[target="_blank"]').evaluateAll(nodes=>nodes.map(a=>({href:a.href,rel:a.rel})));
+  assert.ok(links.length>=10);assert.ok(links.every(a=>a.href.startsWith('https://')&&a.rel.includes('noopener')));
+  const accessibility=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();serviceDialogAxe.push({service:i,violations:accessibility.violations});
+  if(i===1)await page.screenshot({path:'test-results/service-modal-desktop.png'});
+
   if (i === 1) {
     await page.locator('#dialog-contact').click();
     assert.equal(await page.locator('select[name="interest"]').inputValue(), 'Preparação de dados e servidores MCP');
+    assert.equal(await page.locator('#contato').evaluate(el=>el===document.activeElement),true);
   } else {
     await page.keyboard.press('Escape');
   }
@@ -135,6 +153,17 @@ assert.equal(await page.locator('.menu-toggle').evaluate(el=>el===document.activ
 await page.locator('.menu-toggle').click();await page.locator('[data-menu-close]').click();assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'false');
 await page.evaluate(() => scrollTo(0, 0));
 await page.screenshot({ path: 'test-results/mobile.png', fullPage: true });
+for(const width of [320,390]){
+ await page.setViewportSize({width,height:844});
+ for(let i=0;i<4;i++){
+  await page.locator(`[data-service="${i}"]`).click();
+  const r=await page.locator('#detail-dialog').boundingBox();assert.ok(r.x>=0&&r.x+r.width<=width);
+  assert.ok(await page.locator('#dialog-content').evaluate(el=>el.scrollWidth<=el.clientWidth),`Dialog overflow for ${i} at ${width}`);
+  await page.locator('#dialog-content').evaluate(el=>el.scrollTop=el.scrollHeight);assert.equal(await page.locator('#dialog-contact').isVisible(),true);
+  if(width===390&&i===3)await page.screenshot({path:'test-results/service-modal-mobile.png'});
+  await page.keyboard.press('Escape');assert.equal(await page.locator(`[data-service="${i}"]`).evaluate(el=>el===document.activeElement),true);
+ }
+}
 const mobileAxe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
 const pageAxe=[];
 const routeNames=['en/','privacidade/','cookies/','acessibilidade/','publicacoes/','publicacoes/modelo/','en/privacy/','en/cookies/','en/accessibility/','en/publications/','en/publications/template/'];
@@ -159,7 +188,7 @@ for(const route of routeNames){
 await page.goto('http://127.0.0.1:5174/serraresearch.org/en/',{waitUntil:'networkidle'});
 await page.setViewportSize({width:1440,height:1000});
 assert.match(await page.locator('h1').innerText(),/Intelligence and data science for social impact/);
-await page.locator('[data-service="1"]').click();assert.match(await page.locator('#detail-dialog').innerText(),/vector databases/);await page.keyboard.press('Escape');
+await page.locator('[data-service="1"]').click();assert.match(await page.locator('#detail-dialog').innerText(),/vector databases/);assert.match(await page.locator('#detail-dialog').innerText(),/PRIMARY DATA/);assert.match(await page.locator('#detail-dialog').innerText(),/Proprietary \/ non-open-source services/);await page.keyboard.press('Escape');
 const cookieJar=await context.cookies();assert.equal(cookieJar.length,0,'No application cookies');
 assert.ok(!(await page.evaluate(()=>Object.keys(localStorage))).some(key=>/name|email|message/.test(key)),'No form persistence');
 const sitemap=await (await fetch('http://127.0.0.1:5174/serraresearch.org/sitemap-0.xml')).text();assert.ok(!sitemap.includes('/modelo/')&&!sitemap.includes('/template/'));
@@ -171,12 +200,12 @@ await page.setViewportSize({width:320,height:844});await page.goto('http://127.0
 await page.setViewportSize({width:1440,height:1000});await page.locator('[data-open="accessibility-dialog"]').first().click();await page.locator('#reset-preferences').click();await page.keyboard.press('Escape');
 await page.screenshot({path:'test-results/desktop-hero.png'});await page.goto('http://127.0.0.1:5174/serraresearch.org/publicacoes/modelo/',{waitUntil:'networkidle'});await page.screenshot({path:'test-results/whitepaper.png',fullPage:true});
 const simplify = result => result.violations.map(v => ({ id: v.id, impact: v.impact, description: v.description, nodes: v.nodes.map(n => ({ target: n.target, summary: n.failureSummary })) }));
-const report = { functional: 'passed', responsive, errors, failedRequests, accessibility: { desktop: simplify(desktopAxe), dialog: simplify(dialogAxe), mobile: simplify(mobileAxe), contrast:simplify(contrastAxe), pages:pageAxe } };
+const report = { functional: 'passed', responsive, errors, failedRequests, accessibility: { desktop: simplify(desktopAxe), dialog: simplify(dialogAxe), mobile: simplify(mobileAxe), contrast:simplify(contrastAxe), pages:pageAxe, services:serviceDialogAxe.map(r=>({service:r.service,violations:simplify({violations:r.violations})})) } };
 await writeFile('test-results/report.json', JSON.stringify(report, null, 2));
 console.log(JSON.stringify({ functional: report.functional, responsive: report.responsive, errors, failedRequests, accessibility: report.accessibility }, null, 2));
 assert.equal(errors.length, 0, 'JavaScript errors');
 assert.equal(failedRequests.length, 0, 'Failed asset requests');
-assert.equal(desktopAxe.violations.length + mobileAxe.violations.length + dialogAxe.violations.length + contrastAxe.violations.length + pageAxe.reduce((total,p)=>total+p.violations.length,0), 0, 'Accessibility violations');
+assert.equal(desktopAxe.violations.length + mobileAxe.violations.length + dialogAxe.violations.length + contrastAxe.violations.length + pageAxe.reduce((total,p)=>total+p.violations.length,0) + serviceDialogAxe.reduce((total,p)=>total+p.violations.length,0), 0, 'Accessibility violations');
 
 } finally {
   if (browser) await browser.close();

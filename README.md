@@ -28,6 +28,8 @@ No ambiente cloud, use o checkout existente: cada tarefa já é isolada e não p
 ## Conteúdo e organização
 
 - `src/lib/landing.ts`: conteúdo institucional e diagramas renderizados no servidor.
+- `src/lib/service-research.ts`: dossiês bilíngues das quatro áreas, tecnologias, licenças e fontes de dados.
+- `src/components/ServiceDetails.astro`: templates estáticos dos modais; os detalhes são inseridos no diálogo ao abrir cada área.
 - `src/i18n/`: equivalentes de conteúdo em inglês e rótulos de navegação.
 - `src/lib/site.ts`: contato, dados da empresa, caminhos e links bilíngues.
 - `src/components/`: landing, lateral, footer, ferramentas de leitura, biblioteca e layout de artigo.
@@ -38,6 +40,8 @@ No ambiente cloud, use o checkout existente: cada tarefa já é isolada e não p
 - `public/social-preview.png`: imagem para compartilhamento.
 
 Astro é o framework do site, não um painel de administração. As **Content Collections** fornecem o fluxo editorial por arquivos e Git. Nenhum CMS externo, conta editorial, banco de dados ou credencial adicional é necessário. Um painel pode ser integrado posteriormente sem substituir os templates.
+
+Cada modal de atuação reúne stack aberta/proprietária, dados secundários, coleta primária possível, plataformas e indicadores de impacto. As ferramentas são opções de arquitetura, e não uma declaração de uso em todos os projetos. A pesquisa e seus limites estão registrados em [docs/service-research.md](docs/service-research.md). Ao atualizar os dossiês, revise traduções, licenças, disponibilidade das fontes e condições de divulgação; mantenha todos esses detalhes dentro do modal.
 
 ## Publicar uma pesquisa ou whitepaper
 
