@@ -9,4 +9,5 @@
                   <circle cx="110" cy="90" fill="#FD5638" r="3.5"></circle>
                   <rect fill="#FFFFFF" height="16" rx="2" stroke="#DFE1EA" stroke-width="1" width="70" x="80" y="105"></rect>
                   
-                </svg>
+                <text x="115" y="113" fill="#0072b2" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle" dominant-baseline="central">EXUTÓRIO Q50</text>
+</svg>

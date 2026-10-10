@@ -6,4 +6,5 @@
                   <rect fill="#FD5638" height="6" rx="1" width="10" x="145" y="149"></rect>
                   <rect fill="#FFFFFF" height="16" rx="2" stroke="#DFE1EA" stroke-width="1" width="76" x="20" y="55"></rect>
                   
-                </svg>
+                <text x="58" y="63" fill="#b83b24" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle" dominant-baseline="central">SWATH: 290 KM</text>
+</svg>

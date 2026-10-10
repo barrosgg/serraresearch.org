@@ -1,0 +1,10 @@
+<svg fill="none" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 130 C60 110 120 140 200 115" stroke="#A7A9B0" stroke-width="1.2"></path>
+                  <path d="M20 110 C70 85 130 115 200 95" stroke="#494A4D" stroke-width="1.2"></path>
+                  <path d="M20 90 C80 65 140 90 200 75" stroke="#2D3139" stroke-width="1.5"></path>
+                  <line stroke="#FD5638" stroke-dasharray="3 3" stroke-width="1.5" x1="120" x2="120" y1="20" y2="150"></line>
+                  <circle cx="120" cy="78" fill="#FD5638" r="4.5"></circle>
+                  <rect fill="#FFFFFF" height="18" rx="2" stroke="#DFE1EA" stroke-width="1" width="64" x="130" y="70"></rect>
+                  
+                <text x="162" y="79" fill="#2d3139" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle" dominant-baseline="central">PROBE Z-04</text>
+</svg>

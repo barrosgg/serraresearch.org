@@ -2,6 +2,7 @@
 export const researchDesign={
  version:'2.0',
  typography:{display:{desktop:56,mobile:36,weight:600},section:{desktop:36,mobile:28,weight:600},card:19,body:17,metadata:10},
+ charts:{canvas:'#f1f3fc',coral:'#fd5638',graphite:'#2d3139',emerald:'#10b981',amber:'#f59e0b',water:'#0072b2',uncertaintyOpacity:.12,radarScenarioOpacity:.18,radarBaselineOpacity:.22},
  spectral:{vegetation:'#10b981',water:'#0072b2',thermal:'#fd5638',radar:'#6366f1'},
  analyticalGrid:{columns:16,gutter:24,unit:8,maxWidth:1760,mobileColumns:4},
  correlation:{variables:['NDVI','PRECIP','ALBEDO','SOIL M.','LST','BIOM.'],values:[[1,.78,-.64,.69,-.82,.89],[.78,1,-.52,.88,-.71,.74],[-.64,-.52,1,-.41,.67,-.58],[.69,.88,-.41,1,-.79,.61],[-.82,-.71,.67,-.79,1,-.86],[.89,.74,-.58,.61,-.86,1]]},

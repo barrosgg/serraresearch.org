@@ -6,4 +6,5 @@
                   <circle cx="120" cy="78" fill="#FD5638" r="4.5"></circle>
                   <rect fill="#FFFFFF" height="18" rx="2" stroke="#DFE1EA" stroke-width="1" width="64" x="130" y="70"></rect>
                   
-                </svg>
+                <text x="162" y="79" fill="#2d3139" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle" dominant-baseline="central">SONDA Z-04</text>
+</svg>

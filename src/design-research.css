@@ -16,3 +16,11 @@ html.high-contrast :is(.ds-print-toc,.ds-paper-preview,.ds-paper-title,.ds-busin
 
 .ds-dossier-box :is(h4,.mono){color:#3a1b13}
 html.high-contrast .ds-main .ds-dossier-box :is(h4,.mono){color:#111!important}
+
+/* Reference chart palette shared with exported research tokens. */
+#dataviz :is(.ds-data-svg,.ds-heatmap-wrap){background:var(--chart-canvas)}
+#dataviz .ds-line-key{border-color:var(--chart-coral)}
+#dataviz .ds-line-key.ds-green{border-color:var(--chart-emerald)}
+.ds-area-key{width:14px;height:14px;border-radius:4px;background:var(--chart-coral);opacity:.2;flex-shrink:0}
+.ds-temporal-legend{justify-content:space-between;color:var(--muted)}
+html.high-contrast #dataviz :is(.ds-data-svg,.ds-heatmap-wrap){background:#fff!important}
