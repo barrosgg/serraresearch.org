@@ -1,0 +1,22 @@
+{
+  "name": "serra-research",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node tests/smoke.mjs"
+  },
+  "dependencies": {
+    "@fontsource/jetbrains-mono": "5.2.8",
+    "@fontsource/space-grotesk": "5.2.10"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.11.1",
+    "playwright": "1.58.2",
+    "typescript": "5.9.3",
+    "vite": "7.3.1"
+  }
+}
