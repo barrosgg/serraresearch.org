@@ -1,0 +1,22 @@
+---
+import {render,type CollectionEntry} from 'astro:content';
+import Base from '../layouts/Base.astro';
+import {pick} from '../i18n';
+import {path,link,routes,origin} from '../lib/site';
+interface Props {entry:CollectionEntry<'publications'>;translation?:CollectionEntry<'publications'>;}
+const {entry,translation}=Astro.props;
+const {Content,headings}=await render(entry);
+const d=entry.data;const lang=d.language;const p=(pt:string,en:string)=>pick(lang,pt,en);
+const alternate=translation?path(`${routes.publications[translation.data.language]}/${translation.data.slug}`):link('publications',lang==='pt'?'en':'pt');
+const format=(date:Date)=>date.toLocaleDateString(lang==='pt'?'pt-BR':'en-GB',{dateStyle:'long',timeZone:'UTC'});
+const citation=`${d.authors.join('; ')}. ${d.title}. Serra Research, ${d.date.getUTCFullYear()}. ${new URL(Astro.url.pathname,origin).href}`;
+---
+<Base lang={lang} title={`${d.title} — Serra Research`} description={d.description} alternate={alternate} noindex={d.draft} hasTranslation={!!translation} article={d.draft?undefined:{'@type':'ScholarlyArticle',headline:d.title,description:d.description,datePublished:d.date.toISOString(),dateModified:(d.updated||d.date).toISOString(),inLanguage:lang==='pt'?'pt-BR':'en',author:d.authors.map(name=>({'@type':'Person',name})),publisher:{'@type':'Organization',name:'Serra Research'},url:new URL(Astro.url.pathname,origin).href}}>
+ <main id="conteudo" tabindex="-1" class="article-main"><article class="container">
+ <a class="text-link" href={link('publications',lang)}>← {p('Biblioteca de publicações','Publication library')}</a>
+ {d.draft&&<div class="template-notice"><span class="status-dot"></span>{p('Modelo demonstrativo. Não é uma pesquisa publicada e não contém resultados empíricos.','Demonstration template. This is not published research and contains no empirical findings.')}</div>}
+ <header class="article-heading"><span class="eyebrow">SERRA / {d.type.toUpperCase()}</span><h1>{d.title}</h1><p class="article-description">{d.description}</p><div class="article-meta"><span>{d.authors.join(' · ')}</span><time datetime={d.date.toISOString()}>{d.draft?p('Modelo atualizado: ','Template updated: '):''}{format(d.date)}</time>{d.updated&&<span>{p('Revisado: ','Revised: ')}{format(d.updated)}</span>}{d.doi&&<a href={`https://doi.org/${d.doi}`} rel="noopener">DOI: {d.doi}</a>}</div><div class="tags">{d.tags.map(tag=><span>{tag}</span>)}</div></header>
+ <div class="article-layout"><aside class="article-toc"><nav aria-label={p('Sumário da publicação','Publication contents')}><strong class="mono">{p('NESTA PUBLICAÇÃO','IN THIS PUBLICATION')}</strong><a href="#abstract">{p('Resumo executivo','Executive abstract')}</a>{headings.filter(h=>h.depth===2).map(h=><a href={`#${h.slug}`}>{h.text}</a>)}</nav><button class="text-link" id="share-publication">{p('Copiar link','Copy link')} <svg class="inline-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><p id="share-status" role="status"></p>{d.pdf&&<a class="button button-small" href={d.pdf.startsWith('/')?`${import.meta.env.BASE_URL.replace(/\/$/,'')}${d.pdf}`:d.pdf} download>{p('Baixar PDF','Download PDF')} ↓</a>}</aside>
+ <div class="article-body"><section class="abstract" id="abstract" aria-labelledby="abstract-title"><span class="eyebrow">ABSTRACT</span><h2 id="abstract-title">{p('Resumo executivo','Executive abstract')}</h2><p>{d.abstract}</p></section><div class="prose"><Content/></div>{!d.draft&&<section class="citation"><h2>{p('Como citar','How to cite')}</h2><p>{citation}</p></section>}</div></div>
+ </article></main>
+</Base>

@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Publications from './Publications.astro';
+import {landingStart,getClientData} from '../lib/landing';
+import {home} from '../lib/site';
+import {pick,type Locale} from '../i18n';
+const {lang}=Astro.props as {lang:Locale};
+const html=landingStart(lang);
+const contact=html.indexOf('<section class="section contact"');
+const title=pick(lang,'Serra Research — Inteligência e ciência de dados para impacto social','Serra Research — Intelligence and data science for social impact');
+const description=pick(lang,'Pesquisa aplicada, microdados, inteligência geoespacial, dados para IA e análise regulatória para decisões de impacto social.','Applied research, microdata, geospatial intelligence, AI-ready data and regulatory analysis for decisions with social impact.');
+---
+<Base lang={lang} title={title} description={description} alternate={home(lang==='pt'?'en':'pt')} landing>
+ <main id="conteudo" tabindex="-1">
+ <Fragment set:html={html.slice(0,contact)}/>
+ <Publications lang={lang}/>
+ <Fragment set:html={html.slice(contact).replace('<button class="button" type="submit">','<button class="button" type="submit" disabled>')}/>
+ <noscript><p class="container noscript-note">{pick(lang,'Para preparar mensagens e ajustar preferências, ative JavaScript. Você também pode escrever diretamente para','Enable JavaScript to prepare messages and adjust preferences. You can also write directly to')} <a href="mailto:oi@serraresearch.org">oi@serraresearch.org</a>.</p></noscript>
+ </main>
+ <dialog id="detail-dialog" aria-labelledby="dialog-title"><button class="dialog-close" data-close aria-label={pick(lang,'Fechar detalhes','Close details')}>×</button><div id="dialog-content"></div></dialog>
+ <script id="landing-data" type="application/json" set:html={JSON.stringify(getClientData(lang)).replace(/</g,'\\u003c')}/>
+</Base>

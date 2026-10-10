@@ -1,0 +1,15 @@
+---
+import {pick,navLabels,type Locale} from '../i18n';
+import {home,link,sections,email,company} from '../lib/site';
+const {lang}=Astro.props as {lang:Locale};
+const p=(pt:string,en:string)=>pick(lang,pt,en);
+---
+<footer class="site-footer"><div class="container">
+ <div class="footer-grid">
+  <div class="footer-identity"><a class="wordmark" href={home(lang)}>Serra <span>Research</span><i></i></a><p>{p('Inteligência e ciência de dados para impacto social.','Intelligence and data science for social impact.')}</p><a class="text-link" href={`mailto:${email}`}>{email} <span aria-hidden="true"><svg class="inline-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
+  <nav class="footer-nav" aria-label={p('Navegação do rodapé','Footer navigation')}><h2>{p('Explore','Explore')}</h2>{sections.map((id,i)=><a href={`${home(lang)}#${id}`}>{navLabels[lang][i]}</a>)}</nav>
+  <div class="footer-links"><h2>{p('Transparência','Transparency')}</h2><a href={link('privacy',lang)}>{p('Política de privacidade','Privacy policy')}</a><a href={link('cookies',lang)}>{p('Cookies e armazenamento','Cookies and storage')}</a><button class="footer-button" data-open="privacy-dialog">{p('Preferências de privacidade','Privacy preferences')}</button><a href={link('accessibility',lang)}>{p('Declaração de acessibilidade','Accessibility statement')}</a><button class="footer-button" data-open="accessibility-dialog">{p('Ajustar acessibilidade','Accessibility settings')}</button></div>
+ </div>
+ <div class="company-details"><strong>{company.legalName}</strong><address>{company.location}</address><span>{p('CNPJ provisório','Provisional registration number')}: {company.taxId}</span></div>
+ <div class="footer-bottom"><span>© {new Date().getFullYear()} Serra Research</span><span class="mono">{p('CIÊNCIA · DIREITOS HUMANOS · SUSTENTABILIDADE','SCIENCE · HUMAN RIGHTS · SUSTAINABILITY')}</span><a class="text-link" href="#conteudo">{p('Voltar ao topo','Back to top')} ↑</a></div>
+</div></footer>

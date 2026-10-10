@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro';
+import {home} from '../lib/site';
+---
+<Base lang="pt" title="Página não encontrada — Serra Research" description="Este endereço não foi encontrado. Acesse a página inicial da Serra Research." alternate={home('en')} hasTranslation={false} noindex>
+<main id="conteudo" tabindex="-1" class="document-main"><div class="container not-found"><span class="eyebrow">404 / SERRA RESEARCH</span><h1>Este caminho ainda<br/>não tem uma página.</h1><p>O endereço pode ter mudado. Continue pela página inicial ou escreva para nossa equipe.</p><p lang="en">Page not found. The address may have changed. Continue to the home page or contact our team.</p><a class="button" href={home('pt')}>Ir para o início <svg class="inline-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="text-link" href={home('en')} lang="en">Go to the English website <svg class="inline-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></main>
+</Base>

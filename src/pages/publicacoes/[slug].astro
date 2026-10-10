@@ -1,0 +1,6 @@
+---
+import Article from '../../components/Article.astro';
+import {publicationPaths} from '../../lib/publications';
+export const getStaticPaths=()=>publicationPaths('pt');
+---
+<Article {...Astro.props}/>

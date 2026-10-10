@@ -1,55 +1,67 @@
 # Serra Research
 
-Site institucional responsivo baseado no design system **Serra Precision Research** fornecido para o projeto. A página única apresenta atuação, dados e pesquisa, frentes de projetos, metodologia e contato em português brasileiro. A seção de contexto detalha pesquisa educacional, socioeconômica e territorial com bases públicas, microdados, baseline com lideranças e acompanhamento de resultados e impacto, além da preparação de documentos com OCR, chunks, embeddings, bancos vetoriais e MCPs. Um glossário expansível explica os termos técnicos.
+Site institucional em **Astro 5**, com landing page em português e inglês, navegação lateral, fontes locais, ajustes de acessibilidade e biblioteca de publicações. O conteúdo institucional é entregue em HTML estático; JavaScript é usado somente para menu móvel, detalhes, abas, preferências e preparação de e-mail.
 
-A interface combina a base clara da marca com laranja, azul de dados, filetes em gradiente e ícones luminosos. A composição usa navegação flutuante, cards de atuação com diferentes superfícies, conteúdo editorial e uma linha metodológica conectada, com adaptações para celular.
+## Desenvolvimento e validação
 
-## Desenvolvimento
-
-Requer Node.js 20.19+ ou 22.12+ e npm. O ambiente foi validado com Node.js 24.19.0.
+Requer Node.js 22.12+ (validado com 24.19.0) e npm.
 
 ```sh
 cd /workspace/serraresearch.org
-npm ci
-npm run dev -- --port 5173 --strictPort
+npm ci --no-audit --no-fund --cache /workspace/.npm-cache
+ASTRO_TELEMETRY_DISABLED=1 npm run build
+ASTRO_TELEMETRY_DISABLED=1 npm run dev -- --port 5173
 ```
 
-O projeto usa Vite, TypeScript e CSS responsivo, sem framework de interface. As fontes Space Grotesk e JetBrains Mono são instaladas via npm e servidas localmente. Não são necessários segredos, banco de dados ou serviços externos para executar o site.
-
-## Build e validação
+O caminho local é `/serraresearch.org/`, refletindo o subdiretório do GitHub Pages. `astro.config.mjs` define `site`, `base`, URLs e sitemap. O endereço publicado é **https://barrosgg.github.io/serraresearch.org/**; a versão inglesa fica em `/en/`.
 
 ```sh
-npm run build
+ASTRO_TELEMETRY_DISABLED=1 npm run build
 npm test
+ASTRO_TELEMETRY_DISABLED=1 npm run preview -- --port 4173
 ```
 
-O build gera o site estático em `dist/`. Para verificar esse resultado localmente:
+`build` executa a validação TypeScript/Astro e gera `dist/`. `npm test` valida a publicação de entradas bilíngues temporárias e a exclusão de rascunhos, restaura o build sem essas entradas e testa o site de produção, iniciando Astro Preview na porta 5174. Usa `/usr/bin/chromium`, o caminho definido em `CHROMIUM_PATH`, ou o Chromium gerenciado instalado com `npx playwright install chromium`. Valida serviços, abas por teclado, formulário, foco/menu móvel, páginas, traduções, links, SEO, ausência de cookies, preferências, HTML sem JavaScript, responsividade e acessibilidade automatizada com axe. Capturas e relatórios ficam em `test-results/`, ignorado pelo Git. Esses testes não substituem avaliação completa com leitores de tela e pessoas com deficiência.
 
-```sh
-npm run preview -- --port 4173 --strictPort
-```
+No ambiente cloud, use o checkout existente: cada tarefa já é isolada e não precisa de worktree. Processos devem ser reiniciados ao restaurar o ambiente. `ASTRO_TELEMETRY_DISABLED=1` evita telemetria da ferramenta e a necessidade de gravar configurações em um diretório de usuário indisponível; não muda o site.
 
-O teste inicia seu próprio servidor na porta 5174 e utiliza Chromium com Playwright. Verifica os quatro detalhes de serviços, seleção de interesse, navegação por teclado nas abas, validação do formulário, destinatário e conteúdo do e-mail, menu móvel, navegação para dados e pesquisa, glossário e rejeição de campos preenchidos apenas com espaços, ausência de erros JavaScript e carregamento de recursos, layouts de 320 a 1440 pixels e verificações automatizadas de acessibilidade com axe. Relatórios e capturas são gerados em `test-results/`, que não é versionado.
+## Conteúdo e organização
 
-No ambiente cloud, o teste usa `/usr/bin/chromium`. Em outra máquina, configure `CHROMIUM_PATH` com o caminho de um Chromium instalado ou execute `npx playwright install chromium` para instalar o navegador gerenciado pelo Playwright.
+- `src/lib/landing.ts`: conteúdo institucional e diagramas renderizados no servidor.
+- `src/i18n/`: equivalentes de conteúdo em inglês e rótulos de navegação.
+- `src/lib/site.ts`: contato, dados da empresa, caminhos e links bilíngues.
+- `src/components/`: landing, lateral, footer, ferramentas de leitura, biblioteca e layout de artigo.
+- `src/layouts/Base.astro`: HTML, SEO, compartilhamento e dados estruturados.
+- `src/lib/legal.ts`: políticas e declaração de acessibilidade nos dois idiomas.
+- `src/content/publications/`: publicações Markdown validadas por Astro Content Collections.
+- `src/content.config.ts`: esquema editorial obrigatório e estado de rascunho.
+- `public/social-preview.png`: imagem para compartilhamento.
 
-## Conteúdo e contato
+Astro é o framework do site, não um painel de administração. As **Content Collections** fornecem o fluxo editorial por arquivos e Git. Nenhum CMS externo, conta editorial, banco de dados ou credencial adicional é necessário. Um painel pode ser integrado posteriormente sem substituir os templates.
 
-- `src/main.ts`: conteúdo institucional, estrutura da página e interações.
-- `src/style.css`: identidade visual, layouts, estados de foco e adaptações responsivas.
-- `public/favicon.svg`: ícone da marca.
-- `tests/smoke.mjs`: validação funcional e automatizada de acessibilidade.
+## Publicar uma pesquisa ou whitepaper
 
-O contato usa **oi@serraresearch.org**. O formulário prepara uma mensagem via `mailto:` e abre o aplicativo de e-mail do visitante. O envio precisa ser concluído nesse aplicativo. Há uma opção de copiar a mensagem caso não exista um aplicativo configurado. O site não recebe nem armazena os dados do formulário.
+1. Copie `templates/publicacao.pt.md` para `src/content/publications/nome-da-pesquisa.pt.md`. Para inglês, use `templates/publication.en.md`.
+2. Substitua os textos demonstrativos por conteúdo revisado. Preencha título, descrição (máximo 180 caracteres), idioma (`pt` ou `en`), slug exclusivo no idioma, data, autores, tipo, temas e resumo. Use a mesma `translationKey` nas traduções.
+3. Use `##` para as seções que entram automaticamente no sumário. Adicione métodos, fontes, resultados, limitações e referências. Imagens precisam de descrição alternativa; gráficos com dados precisam de fonte, unidades e equivalente textual ou tabela acessível.
+4. Se existir PDF real, coloque-o em `public/publications/` e configure `pdf: /publications/arquivo.pdf`. Verifique sua acessibilidade. `doi` é opcional e deve conter um identificador real, como `10.xxxx/xxxxx`.
+5. Mantenha `draft: true` durante a revisão. Rascunhos comuns não geram páginas públicas nem aparecem na biblioteca ou na landing page. Defina `draft: false` para publicar.
+6. Execute build e testes; faça commit e push para `main`. O workflow publica somente após os testes passarem. A entrada aparece automaticamente na landing e na biblioteca do idioma, com seu próprio permalink, sumário, resumo e citação.
 
-As imagens de dados são diagramas conceituais. As frentes de projetos descrevem aplicações dos serviços; não representam cases comprovados. Não foram incluídas métricas, nomes de clientes, publicações ou integrantes de equipe sem confirmação.
+Os modelos especiais `model-pt.md` e `model-en.md` têm `translationKey: editorial-template` e são exibidos explicitamente como exemplos em `/publicacoes/modelo/` e `/en/publications/template/`. Continuam em rascunho, têm `noindex` e são excluídos do sitemap. Não apresentam resultados ou métricas fictícias. Para uma publicação real, use outra `translationKey` e slugs que não sejam `modelo` ou `template`.
 
-## Publicação
+Quando não houver tradução de uma pesquisa, o seletor de idioma leva à biblioteca do outro idioma; não declara essa biblioteca como tradução no `hreflang`.
 
-O workflow `.github/workflows/deploy-pages.yml` gera e publica o conteúdo de `dist/` no GitHub Pages a cada push para `main`. Também pode ser iniciado manualmente pela aba Actions.
+## Privacidade, acessibilidade e contato
 
-No repositório, selecione **Settings → Pages → Build and deployment → Source → GitHub Actions**. O endereço padrão é `https://barrosgg.github.io/serraresearch.org/`. A configuração de assets relativos em `vite.config.ts` funciona nesse caminho e também em um futuro domínio customizado.
+O site não instala analytics, pixels, cookies de publicidade nem incorpora mapas de terceiros. Um aviso informativo explica a operação atual. `localStorage` guarda apenas ajustes de leitura (`serra-accessibility`) e a dispensa do aviso (`serra-privacy-notice`). O visitante pode apagar essas preferências no rodapé; não são enviadas à empresa. Se serviços opcionais forem integrados, será necessário implementar bloqueio anterior ao consentimento e escolhas equivalentes de aceitar/rejeitar antes de ativá-los.
 
-DNS, domínio customizado e entrega de e-mails são configurações separadas.
+O formulário **prepara um e-mail** para `oi@serraresearch.org`; o visitante conclui o envio no próprio aplicativo. O site não recebe, transmite ao backend nem salva seus campos. Há validação e uma alternativa para copiar a mensagem. Sem JavaScript, o contato direto por e-mail continua disponível. Envio direto exigirá serviço de backend e atualização da política.
 
-Para futuras tarefas cloud, use o checkout existente em `/workspace/serraresearch.org`: cada tarefa já é isolada e não requer um Git worktree. Os processos de desenvolvimento precisam ser iniciados novamente após restaurar o ambiente.
+Os dados da empresa foram fornecidos pelo responsável pelo projeto. O CNPJ `00.000.000/0000-00` foi solicitado como placeholder, está identificado como provisório e foi omitido dos dados estruturados. Substitua-o por um registro confirmado em `src/lib/site.ts` e atualize a política antes de representar cadastro definitivo.
+
+## Hospedagem e mudanças de domínio
+
+`.github/workflows/deploy-pages.yml` usa Node 24, instala dependências pelo lockfile, gera o site, testa com Chromium e publica `dist/` no GitHub Pages a cada push para `main`. A origem de Pages deve ser **GitHub Actions**.
+
+Para domínio próprio, atualize `site`, `base`, `origin` e o mapeamento de URLs do sitemap em `astro.config.mjs` e `src/lib/site.ts`; depois configure DNS/Pages e verifique canonicals, robots, alternates e assets. Não há domínio próprio configurado nesta alteração. HTTPS é fornecido pelo Pages; controle de cabeçalhos HTTP depende da hospedagem.
