@@ -40,7 +40,7 @@ No ambiente cloud, use o checkout existente: cada tarefa já é isolada e não p
 - `src/content.config.ts`: esquema editorial obrigatório e estado de rascunho.
 - `public/social-preview.png`: imagem para compartilhamento.
 
-Astro é o framework do site, não um painel de administração. As **Content Collections** fornecem o fluxo editorial por arquivos e Git. Nenhum CMS externo, conta editorial, banco de dados ou credencial adicional é necessário. Um painel pode ser integrado posteriormente sem substituir os templates.
+Astro é o framework do site. O editor local em `/publicacoes/editor/` (inglês: `/en/publications/editor/`) prepara e baixa Markdown com metadados, autoria e texto, sempre como rascunho. Não persiste dados e não publica diretamente. As **Content Collections** fornecem o fluxo editorial por arquivos e Git. Nenhum CMS externo, conta editorial, banco de dados ou credencial adicional é necessário. Um painel pode ser integrado posteriormente sem substituir os templates.
 
 Cada modal de atuação reúne stack aberta/proprietária, dados secundários, coleta primária possível, plataformas e indicadores de impacto. As ferramentas são opções de arquitetura, e não uma declaração de uso em todos os projetos. A pesquisa e seus limites estão registrados em [docs/service-research.md](docs/service-research.md). Ao atualizar os dossiês, revise traduções, licenças, disponibilidade das fontes e condições de divulgação; mantenha todos esses detalhes dentro do modal.
 
@@ -54,7 +54,7 @@ O design system público fica em `/design-system/` e `/en/design-system/`, com l
 3. Use `##` para as seções que entram automaticamente no sumário. Adicione métodos, fontes, resultados, limitações e referências. Imagens precisam de descrição alternativa; gráficos com dados precisam de fonte, unidades e equivalente textual ou tabela acessível.
 4. Se existir PDF real, coloque-o em `public/publications/` e configure `pdf: /publications/arquivo.pdf`. Verifique sua acessibilidade. `doi` é opcional e deve conter um identificador real, como `10.xxxx/xxxxx`.
 5. Mantenha `draft: true` durante a revisão. Rascunhos comuns não geram páginas públicas nem aparecem na biblioteca ou na landing page. Defina `draft: false` para publicar.
-6. Execute build e testes; faça commit e push para `main`. O workflow publica somente após os testes passarem. A entrada aparece automaticamente na landing e na biblioteca do idioma, com seu próprio permalink, sumário, resumo e citação.
+6. Execute build e testes; faça commit e push para `main`. O workflow publica somente após os testes passarem. A entrada aparece automaticamente na biblioteca pesquisável do idioma e, quando está entre as três mais recentes, na landing, com seu próprio permalink, sumário, resumo e citação.
 
 Os modelos especiais `model-pt.md` e `model-en.md` têm `translationKey: editorial-template` e são exibidos explicitamente como exemplos em `/publicacoes/modelo/` e `/en/publications/template/`. Continuam em rascunho, têm `noindex` e são excluídos do sitemap. Não apresentam resultados ou métricas fictícias. Para uma publicação real, use outra `translationKey` e slugs que não sejam `modelo` ou `template`.
 
@@ -75,3 +75,11 @@ Os dados da empresa foram fornecidos pelo responsável pelo projeto. O CNPJ `00.
 `.github/workflows/deploy-pages.yml` usa Node 24, instala dependências pelo lockfile, gera o site, testa com Chromium e publica `dist/` no GitHub Pages a cada push para `main`. A origem de Pages deve ser **GitHub Actions**.
 
 Para domínio próprio, atualize `site`, `base`, `origin` e o mapeamento de URLs do sitemap em `astro.config.mjs` e `src/lib/site.ts`; depois configure DNS/Pages e verifique canonicals, robots, alternates e assets. Não há domínio próprio configurado nesta alteração. HTTPS é fornecido pelo Pages; controle de cabeçalhos HTTP depende da hospedagem.
+
+### Biblioteca demonstrativa e editor
+
+A biblioteca pública em `/publicacoes/` e `/en/publications/` oferece busca por título, autoria, resumo, DOI, veículo e temas; filtros combináveis por tema, ano e tipo; ordenação e estado dos filtros na URL. Sem JavaScript, todos os artigos permanecem acessíveis.
+
+Seis exemplos bilíngues usam `demo: true`, `draft: false` e endereços com prefixo reservado `demo-`. São identificados como fictícios nas listas e no artigo; gráficos e tabelas são sintéticos. Não têm DOI, PDF, contagens de citações ou selos de revisão inventados. Os exemplos têm `noindex`, ficam fora do sitemap e não emitem metadados científicos. Publicações reais e fictícias não se misturam na seção de relacionadas. Remova os arquivos `demo-*.md` quando o acervo real estiver pronto. `featured: true` destaca uma entrada na biblioteca. O primeiro item de `tags` define o tema do filtro.
+
+O editor valida campos obrigatórios, endereços reservados, DOI, ORCID e links, serializa os dados como YAML e baixa o arquivo `.md`. Os nomes de arquivo sugeridos combinam slug e idioma. Para traduzir, crie a outra entrada com a mesma `translationKey`. Os campos científicos adicionais podem ser preenchidos pelos templates completos. Não há autenticação ou gravação no GitHub pela interface; a revisão e publicação seguem os passos acima.

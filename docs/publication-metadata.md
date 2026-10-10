@@ -47,3 +47,9 @@ authors:
 `venue.kind` aceita `conference`, `journal`, `workshop`, `series` e `institution`. Recursos possuem `label`, `kind` e `url`. URLs externas exigem HTTPS; arquivos de pesquisa locais devem ficar em `/publications/`. `related` contém as `translationKey` das publicações relacionadas, e não suas URLs.
 
 Antes de mudar `draft` para `false`, revise metadados, autoria, arquivos, licença, afirmações de revisão e as duas traduções. Use títulos `##` para as seções do sumário. Os testes validam publicação, descoberta, metadados estruturados e exclusão de rascunhos.
+
+## Acervo de desenvolvimento
+
+`demo: true` é uma classificação explícita para exemplos fictícios autorizados para desenvolvimento. Requer slug `demo-…`, tem aviso público e noindex, é excluído do sitemap e não emite ScholarlyArticle nem citation_*; a citação e o BibTeX também avisam que se trata de demonstração. Não use métricas científicas, DOI, autores reais ou downloads inventados. O exemplo destacado usa séries sintéticas cujos valores estão documentados no próprio artigo.
+
+`featured: true` controla o card destacado. Busca e filtros são inteiramente locais. O editor PT/EN exporta metadados e Markdown como rascunho; nenhum dado digitado é persistido. Campos opcionais não expostos no editor permanecem disponíveis no template e no schema Astro.

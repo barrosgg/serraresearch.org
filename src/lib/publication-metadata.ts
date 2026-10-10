@@ -3,7 +3,7 @@ import {origin} from './site';
 export type PublicationData=CollectionEntry<'publications'>['data'];
 export const resourceHref=(url:string)=>url.startsWith('/')?`${import.meta.env.BASE_URL.replace(/\/$/,'')}${url}`:url;
 export function publicationMetadata(d:PublicationData,canonical:string){
- const citation=`${d.authors.map(a=>a.name).join('; ')}. ${d.title}. ${d.venue?.name||d.publisher||'Serra Research'}, ${d.date.getUTCFullYear()}${d.version?`, v. ${d.version}`:''}. ${d.doi?`https://doi.org/${d.doi}`:canonical}`;
+ const citation=`${d.demo?'[DEMO] ':''}${d.authors.map(a=>a.name).join('; ')}. ${d.title}. ${d.venue?.name||d.publisher||'Serra Research'}, ${d.date.getUTCFullYear()}${d.version?`, v. ${d.version}`:''}. ${d.doi?`https://doi.org/${d.doi}`:canonical}`;
  const authorSchema=d.authors.map(a=>({'@type':'Person',name:a.name,...(a.url&&{url:a.url}),...('orcid' in a&&a.orcid&&{sameAs:`https://orcid.org/${a.orcid}`}),...(a.affiliations.length&&{affiliation:a.affiliations.map(name=>({'@type':'Organization',name}))})}));
  const publisher=d.publisher||(!d.venue?'Serra Research':undefined);
  const structured={'@type':'ScholarlyArticle',headline:d.title,description:d.description,abstract:d.abstract,datePublished:d.date.toISOString(),dateModified:(d.updated||d.date).toISOString(),inLanguage:d.language==='pt'?'pt-BR':'en',author:authorSchema,...(publisher&&{publisher:{'@type':'Organization',name:publisher}}),url:canonical,genre:d.type,keywords:d.tags.join(', '),...(d.doi&&{identifier:{'@type':'PropertyValue',propertyID:'DOI',value:d.doi}}),...(d.venue&&{isPartOf:{'@type':d.venue.kind==='journal'?'Periodical':'CreativeWork',name:d.venue.name,...(d.venue.url&&{url:d.venue.url}),...(d.venue.issn&&{issn:d.venue.issn})}}),...(d.license?.url&&{license:d.license.url}),...(d.version&&{version:d.version}),...(d.pdf&&{encoding:{'@type':'MediaObject',encodingFormat:'application/pdf',contentUrl:new URL(resourceHref(d.pdf),origin).href}})};
@@ -19,6 +19,6 @@ export function publicationMetadata(d:PublicationData,canonical:string){
  if(d.publisher&&bibType!=='techreport')bibFields.push(['publisher',d.publisher]);
  if(d.doi)bibFields.push(['doi',d.doi]);if(d.version)bibFields.push(['note',`Version ${d.version}`]);if(d.reportNumber&&bibType!=='article')bibFields.push(['number',d.reportNumber]);
  for(const field of ['volume','pages'] as const)if(d.venue?.[field])bibFields.push([field,d.venue[field]!]);if(d.venue?.issue)bibFields.push(['number',d.venue.issue]);
- const bibtex=`@${bibType}{serra-${d.slug}-${d.date.getUTCFullYear()},\n${bibFields.map(([key,value])=>`  ${key} = {${escape(value)}}`).join(',\n')}\n}\n`;
+ const bibtex=`${d.demo?'% DEVELOPMENT DEMO: fictional publication; not scientific evidence.\n':''}@${bibType}{serra-${d.slug}-${d.date.getUTCFullYear()},\n${bibFields.map(([key,value])=>`  ${key} = {${escape(value)}}`).join(',\n')}\n}\n`;
  return {citation,structured,citations,bibtex};
 }

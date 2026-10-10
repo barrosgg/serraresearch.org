@@ -166,7 +166,7 @@ for(const width of [320,390]){
 }
 const mobileAxe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
 const pageAxe=[];
-const routeNames=['en/','privacidade/','cookies/','acessibilidade/','publicacoes/','publicacoes/modelo/','en/privacy/','en/cookies/','en/accessibility/','en/publications/','en/publications/template/','design-system/','en/design-system/'];
+const routeNames=['en/','privacidade/','cookies/','acessibilidade/','publicacoes/','publicacoes/modelo/','en/privacy/','en/cookies/','en/accessibility/','en/publications/','en/publications/template/','design-system/','en/design-system/','publicacoes/editor/','en/publications/editor/','publicacoes/demo-educacao/','en/publications/demo-educacao/'];
 for(const route of routeNames){
  await page.setViewportSize({width:1440,height:1000});
  const response=await page.goto(`http://127.0.0.1:5174/serraresearch.org/${route}`,{waitUntil:'networkidle'});
@@ -181,6 +181,7 @@ for(const route of routeNames){
   if(href.startsWith('#')){assert.ok(await page.locator(`[id="${href.slice(1)}"]`).count(),`Missing anchor ${href} on ${route}`);}
   else if(href.startsWith('/serraresearch.org/')){const target=new URL(href,'http://127.0.0.1:5174');const result=await fetch(target);assert.equal(result.status,200,`Broken link ${href}`);}
  }
+ if(route.includes('demo-')){assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex,follow');assert.equal(await page.locator('meta[name="citation_title"]').count(),0);assert.ok(!(await page.content()).includes('ScholarlyArticle'));}
  if(route.includes('modelo')||route.includes('template')){
   assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex,follow');assert.equal(await page.locator('.publication-breadcrumbs li').count(),3);assert.equal(await page.locator('.publication-editorial-guide dt').count(),6);assert.equal(await page.locator('meta[name="citation_title"]').count(),0);
   await page.locator('a[href="#publication-details"]').click();assert.equal(new URL(page.url()).hash,'#publication-details');
@@ -199,8 +200,8 @@ for(const route of routeNames){
   await page.setViewportSize({width,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Overflow ${route} at ${width}`);
   if(route.includes('design-system'))assert.ok(await page.evaluate(()=>document.querySelector('.ds-toc').getBoundingClientRect().top>=document.querySelector('.ds-hero').getBoundingClientRect().bottom),'Design system contents must follow the hero without overlapping it');
  }
- if(route.includes('design-system')){
-  await page.evaluate(()=>document.documentElement.style.setProperty('--text-scale','1.3'));await page.setViewportSize({width:320,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Design system overflow at 130% on ${route}`);
+ if(route.includes('design-system')||route.includes('publications')||route.includes('publicacoes')){
+  await page.evaluate(()=>document.documentElement.style.setProperty('--text-scale','1.3'));await page.setViewportSize({width:320,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Text overflow at 130% on ${route}`);
   await page.screenshot({path:`test-results/design-system-mobile-${lang}.png`});
   await page.evaluate(()=>{document.documentElement.style.removeProperty('--text-scale');document.documentElement.classList.add('high-contrast');});await page.setViewportSize({width:1440,height:1000});
   const highContrast=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();pageAxe.push({route:`${route} high contrast`,violations:highContrast.violations});
@@ -220,6 +221,37 @@ const noJs=await browser.newContext({javaScriptEnabled:false,viewport:{width:390
 await page.setViewportSize({width:320,height:844});await page.goto('http://127.0.0.1:5174/serraresearch.org/',{waitUntil:'networkidle'});await page.locator('.menu-toggle').click();await page.locator('[data-open="accessibility-dialog"]').first().click();await page.locator('#text-size').fill('130');await page.keyboard.press('Escape');assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Overflow at 130% text, 320px');
 await page.setViewportSize({width:1440,height:1000});await page.locator('[data-open="accessibility-dialog"]').first().click();await page.locator('#reset-preferences').click();await page.keyboard.press('Escape');
 await page.screenshot({path:'test-results/desktop-hero.png'});await page.goto('http://127.0.0.1:5174/serraresearch.org/publicacoes/modelo/',{waitUntil:'networkidle'});await page.screenshot({path:'test-results/whitepaper.png',fullPage:true});
+
+await page.goto('http://127.0.0.1:5174/serraresearch.org/publicacoes/',{waitUntil:'networkidle'});
+await page.setViewportSize({width:1440,height:1000});
+assert.equal(await page.locator('.research-record').count(),6);assert.equal(await page.locator('.research-demo-label').count(),6);
+await page.screenshot({path:'test-results/research-library-desktop.png',fullPage:true});
+const visible=()=>page.locator('.research-record:visible');
+await page.locator('#publication-search').fill('permanencia');await page.waitForTimeout(200);assert.equal(await visible().count(),1);
+assert.equal(new URL(page.url()).searchParams.get('q'),'permanencia');await page.reload();assert.equal(await visible().count(),1);
+await page.locator('#reset-publication-filters').click();assert.equal(await visible().count(),6);
+await page.locator('[data-topic="Território e ambiente"]').click();assert.equal(await visible().count(),2);
+await page.locator('#publication-year').selectOption('2025');assert.equal(await visible().count(),1);
+await page.locator('#publication-type').selectOption('Nota técnica');assert.equal(await visible().count(),0);assert.equal(await page.locator('#publication-empty-state').isVisible(),true);
+await page.locator('#reset-empty-search').click();assert.equal(await visible().count(),6);
+await page.locator('#publication-sort').selectOption('oldest');assert.match(await visible().first().innerText(),/2024/);
+await page.locator('#reset-publication-filters').click();await page.keyboard.press('Control+k');assert.equal(await page.locator('#publication-search').evaluate(el=>el===document.activeElement),true);
+await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-results/research-library-mobile.png',fullPage:true});
+await page.goto('http://127.0.0.1:5174/serraresearch.org/publicacoes/editor/',{waitUntil:'networkidle'});
+const values={title:'Pesquisa "segura": <script>alert(1)</script>',description:'Descrição de teste com acentos.',slug:'validacao-editor',translationKey:'validacao-editor',date:'2026-10-10',tags:'Educação, Dados abertos',authors:'Autora Teste | Instituição Teste | 0000-0000-0000-0000',abstract:'Resumo com duas linhas.\nSem publicação automática.',body:'## Metodologia\n\nTexto de teste com <script>alert(1)</script>.',venue:'Série de teste',doi:'10.5555/editor',pdf:'/publications/example.pdf',publicationUrl:'https://example.invalid/paper',resources:'dataset | Dados | https://example.invalid/data'};
+for(const [name,value] of Object.entries(values))await page.locator(`#publication-editor [name="${name}"]`).fill(value);
+await page.locator('#publication-editor [name="demo"]').check();await page.locator('#publication-editor [type="submit"]').click();
+assert.equal(await page.locator('#download-publication').isEnabled(),true);
+const markdown=await page.locator('#editor-markdown').inputValue();const frontmatter=Object.fromEntries(markdown.split('---')[1].trim().split('\n').map(line=>{const index=line.indexOf(':');return[line.slice(0,index),JSON.parse(line.slice(index+1))];}));
+assert.equal(frontmatter.title,values.title);assert.equal(frontmatter.slug,'demo-validacao-editor');assert.equal(frontmatter.draft,true);assert.equal(frontmatter.demo,true);assert.equal(frontmatter.authors[0].affiliations[0],'Instituição Teste');assert.equal(frontmatter.resources[0].kind,'dataset');assert.equal(frontmatter.abstract,values.abstract);assert.equal(await page.locator('#conteudo script:not([src])').count(),0,'User text must never render as HTML');
+const downloadEvent=page.waitForEvent('download');await page.locator('#download-publication').click();const downloaded=await downloadEvent;assert.equal(downloaded.suggestedFilename(),'demo-validacao-editor-pt.md');
+const downloadedText=await (await import('node:fs/promises')).readFile(await downloaded.path(),'utf8');assert.equal(downloadedText,markdown);
+await page.locator('#publication-editor [name="doi"]').fill('fake-doi');assert.equal(await page.locator('#download-publication').isDisabled(),true);await page.locator('#publication-editor [type="submit"]').click();assert.match(await page.locator('#editor-status').innerText(),/DOI/);assert.equal(await page.locator('#editor-markdown').inputValue(),'');
+await page.locator('#publication-editor [name="doi"]').fill('');await page.locator('#publication-editor [name="pdf"]').fill('javascript:alert(1)');await page.locator('#publication-editor [type="submit"]').click();assert.equal(await page.locator('#download-publication').isDisabled(),true);assert.match(await page.locator('#editor-status').innerText(),/HTTPS/);
+assert.ok(!(await page.evaluate(()=>Object.values(localStorage).join(' '))).includes('Autora Teste'),'Editor must not persist author information');
+assert.ok(!sitemap.includes('/demo-')&&!sitemap.includes('/editor/'));
+const libraryNoJs=await browser.newContext({javaScriptEnabled:false});const plain=await libraryNoJs.newPage();await plain.goto('http://127.0.0.1:5174/serraresearch.org/publicacoes/');assert.equal(await plain.locator('.research-record:visible').count(),6);assert.equal(await plain.locator('#publication-search').isDisabled(),true);await libraryNoJs.close();
+
 const simplify = result => result.violations.map(v => ({ id: v.id, impact: v.impact, description: v.description, nodes: v.nodes.map(n => ({ target: n.target, summary: n.failureSummary })) }));
 const report = { functional: 'passed', responsive, errors, failedRequests, accessibility: { desktop: simplify(desktopAxe), dialog: simplify(dialogAxe), mobile: simplify(mobileAxe), contrast:simplify(contrastAxe), pages:pageAxe, services:serviceDialogAxe.map(r=>({service:r.service,violations:simplify({violations:r.violations})})) } };
 await writeFile('test-results/report.json', JSON.stringify(report, null, 2));
