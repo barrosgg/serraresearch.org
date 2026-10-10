@@ -36,7 +36,7 @@ export async function auditModels(page, baseURL) {
         }
         const markers=await page.locator('.section-heading .eyebrow').evaluateAll(nodes=>nodes.map(el=>({color:getComputedStyle(el).color,background:getComputedStyle(el).backgroundColor,size:parseFloat(getComputedStyle(el).fontSize),weight:Number(getComputedStyle(el).fontWeight)})));
         assert.ok(markers.length>0,'Landing section markers must be present');
-        for(const marker of markers){assert.equal(marker.color,'rgb(253, 86, 56)');assert.equal(marker.background,'rgb(255, 255, 255)');assert.ok(marker.size>=19&&marker.weight>=700);}
+        for(const marker of markers){assert.equal(marker.color,'rgb(253, 86, 56)');assert.equal(marker.background,'rgba(0, 0, 0, 0)');assert.ok(marker.size>=19&&marker.weight>=700);}
       }
       if(route.includes('design-system')) {
         const returnButton=await page.locator('.sidebar-return').evaluate(el=>{const s=getComputedStyle(el);return {background:s.backgroundColor,color:s.color,size:parseFloat(s.fontSize),weight:Number(s.fontWeight),arrow:getComputedStyle(el.querySelector('path')).stroke};});

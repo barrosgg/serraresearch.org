@@ -44,7 +44,7 @@ Os arquivos gerados são versionados; o build e o deploy não dependem dessa eta
 
 O inventário dos anexos e a matriz de correspondência estão em [model-audit.md](model-audit.md) e no final da página do design system. `npm test` verifica os destinos em português e inglês, as cores calculadas e os arquivos de download.
 
-Os botões laranja ativos usam `#FD5638` com texto e setas `#FFFFFF`, em 15 px e peso 600; na lateral, 14 px. O contraste de 3,20:1 não atende AA para texto normal. A escolha de cores e tipografia da marca é registrada como limitação conhecida nos relatórios, sem desativar as verificações do axe. O modo de alto contraste usa uma combinação mais escura. Marcadores de seção da landing page usam o laranja canônico em texto grande sobre branco.
+Os botões laranja ativos usam `#FD5638` com texto e setas `#FFFFFF`, em 15 px e peso 600; na lateral, 14 px. O contraste de 3,20:1 não atende AA para texto normal. A escolha de cores e tipografia da marca é registrada como limitação conhecida nos relatórios, sem desativar as verificações do axe. O modo de alto contraste usa uma combinação mais escura. Marcadores de seção da landing page usam o laranja canônico diretamente sobre o fundo da seção, sem retângulos brancos ou preenchimento vertical. O contraste desses marcadores sobre `#F4F5F8` e `#F0F3FA` é, respectivamente, 2,93:1 e 2,87:1, abaixo do mínimo de 3:1 para texto grande; no alto contraste, o texto dos marcadores é escuro.
 
 A lateral tem 248 px no desktop e 224 px entre 1.101 e 1.350 px, acompanhando a ampliação de texto. Seu botão usa altura mínima de 44 px, padding de 12 × 16 px e seta de 18 px; os rótulos padrão cabem em uma linha. A altura pode aumentar com a ampliação de texto para manter todo o conteúdo legível.
 
