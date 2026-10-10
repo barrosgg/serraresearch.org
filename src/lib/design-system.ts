@@ -3,10 +3,10 @@ import {researchDesign} from './research-design';
 export const designTokens = {
  name:'Serra Research', version:'2.0', research:researchDesign, updated:'2026-10-10',
  colors:{orange:'#fd5638',orangeInk:'#b83b24',actionOrange:'#fd5638',buttonInk:'#ffffff',coralDetailInk:'#3a1b13',accentText:'#fd5638',dataBlue:'#0057ff',blueInk:'#0049cf',blueSoft:'#eef3ff',charcoal:'#2e2e2e',body:'#494a4d',muted:'#676a73',snow:'#f4f5f8',line:'#dfe1ea',white:'#ffffff',darkSurface:'#303238',warmSurface:'#fff7f2',territorySurface:'#edf1ee'},
- typography:{sans:'Space Grotesk',mono:'JetBrains Mono',weights:[400,500,600,700],body:17,bodyLineHeight:1.75,textScale:[1,1.3],hero:{desktop:'clamp(42px, 4vw, 62px)',tablet:50,mobile:42,lineHeight:1.08},section:{desktop:40,mobile:33},serviceTitle:{desktop:29,mobile:26},button:19,monoSize:11},
+ typography:{sans:'Space Grotesk',mono:'JetBrains Mono',weights:[400,500,600,700],body:17,bodyLineHeight:1.75,textScale:[1,1.3],hero:{desktop:'clamp(42px, 4vw, 62px)',tablet:50,mobile:42,lineHeight:1.08},section:{desktop:40,mobile:33},serviceTitle:{desktop:29,mobile:26},button:15,compactButton:14,monoSize:11},
  spacing:[4,8,12,16,20,24,32,40,48,64],
  radii:{field:8,navigation:10,icon:13,card:20,serviceDialog:24,panel:28,pill:100},
- layout:{containerMax:1180,sidebar:248,mobileDrawer:290,desktopGutter:40,tabletGutter:32,mobileGutter:20,sectionSpace:92,mobileSectionSpace:65,serviceDialogMax:1040,preferencesDialogMax:660,breakpoints:[1100,900,800,650,600,480]},
+ layout:{containerMax:1180,sidebar:248,compactSidebar:224,mobileDrawer:290,desktopGutter:40,tabletGutter:32,mobileGutter:20,sectionSpace:92,mobileSectionSpace:65,serviceDialogMax:1040,preferencesDialogMax:660,breakpoints:[1100,900,800,650,600,480]},
  motion:{buttonMs:200,cardMs:250,drawerMs:250,buttonHoverY:-2,cardHoverY:-4,scroll:'smooth',reducedMotion:'no animation or transitions; auto scroll'},
  accessibility:{primaryTargetMin:44,focusWidth:2,focusOffset:5,contrastNormal:4.5,contrastLarge:3,textScaleMax:1.3},
 } as const;
@@ -26,7 +26,7 @@ export function contrastRatio(foreground:string,background:string){
  const values=[luminance(foreground),luminance(background)].sort((a,b)=>b-a);return (values[0]+.05)/(values[1]+.05);
 }
 export const contrastPairs=[
- {foreground:designTokens.colors.buttonInk,background:designTokens.colors.actionOrange,label:['Botão coral — 19 px / 700','Coral button — 19 px / 700'],large:true},
+ {foreground:designTokens.colors.buttonInk,background:designTokens.colors.actionOrange,label:['Botão coral — 14–15 px / 600','Coral button — 14–15 px / 600'],large:false},
  {foreground:designTokens.colors.white,background:designTokens.colors.dataBlue,label:['Botão azul','Blue button'],large:false},
  {foreground:designTokens.colors.blueInk,background:designTokens.colors.white,label:['Link azul','Blue link'],large:false},
  {foreground:designTokens.colors.muted,background:designTokens.colors.snow,label:['Texto de apoio','Supporting text'],large:false},

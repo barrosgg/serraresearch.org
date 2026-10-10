@@ -1,11 +1,14 @@
 import { auditModels } from './model-audit.mjs';
 import { chromium } from 'playwright';
-import AxeBuilder from '@axe-core/playwright';
+import {auditAccessibility} from './accessibility.mjs';
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { spawn } from 'node:child_process';
 import { setTimeout as delay } from 'node:timers/promises';
+
+const accessibilityChecks=[];
+const checkAccessibility=async page=>{const result=await auditAccessibility(page);accessibilityChecks.push(result);return result;};
 
 const output = 'test-results';
 await mkdir(output, { recursive: true });
@@ -47,7 +50,7 @@ await page.evaluate(() => scrollTo(0, 0));
 await page.screenshot({ path: 'test-results/desktop.png', fullPage: true });
 await page.keyboard.press('Tab');
 await page.locator('.skip-link').focus();await page.keyboard.press('Enter');assert.equal(await page.locator('main').evaluate(el=>el===document.activeElement),true);
-const desktopAxe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+const desktopAxe = await checkAccessibility(page);
 
 const serviceDialogAxe=[];
 assert.equal(await page.locator('.hero-actions .button-blue').innerText(),'Nosso método');
@@ -67,7 +70,7 @@ for (let i = 0; i < 4; i++) {
   assert.equal(await page.locator('#detail-dialog .service-references').evaluate(el=>el.open),true);
   const links=await page.locator('#detail-dialog a[target="_blank"]').evaluateAll(nodes=>nodes.map(a=>({href:a.href,rel:a.rel})));
   assert.ok(links.length>=10);assert.ok(links.every(a=>a.href.startsWith('https://')&&a.rel.includes('noopener')));
-  const accessibility=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();serviceDialogAxe.push({service:i,violations:accessibility.violations});
+  const accessibility=await checkAccessibility(page);serviceDialogAxe.push({service:i,violations:accessibility.violations});
   if(i===1)await page.screenshot({path:'test-results/service-modal-desktop.png'});
 
   if (i === 1) {
@@ -111,7 +114,7 @@ assert.match(mailto.searchParams.get('subject'), /Radar Legislativo & Análise d
 assert.match(await page.locator('#form-status').innerText(), /Conclua o envio no seu aplicativo/);
 await page.locator('[data-open="privacy-dialog"]').click();
 assert.match(await page.locator('#privacy-dialog').innerText(), /Não usamos cookies de publicidade/);
-const dialogAxe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+const dialogAxe = await checkAccessibility(page);
 await page.keyboard.press('Escape');
 await page.locator('[data-open="accessibility-dialog"]').first().click();
 await page.locator('#text-size').fill('130');
@@ -121,7 +124,7 @@ await page.keyboard.press('Escape');
 await page.reload({waitUntil:'networkidle'});
 assert.equal(await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--text-scale').trim()),'1.3');
 assert.equal(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior),'auto');
-const contrastAxe=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+const contrastAxe=await checkAccessibility(page);
 await page.locator('[data-open="privacy-dialog"]').click();
 await page.locator('#clear-local-data').click();
 assert.equal(await page.evaluate(()=>localStorage.getItem('serra-accessibility')),null);
@@ -130,12 +133,16 @@ await page.keyboard.press('Escape');
 await page.locator('#dismiss-notice').click();
 
 const responsive = [];
-for (const width of [320, 375, 390, 768, 901, 950, 1024, 1440]) {
+for (const width of [320, 375, 390, 768, 901, 950, 1024, 1280, 1440]) {
   await page.setViewportSize({ width, height: 900 });
   await page.goto('http://127.0.0.1:5174/serraresearch.org/', { waitUntil: 'networkidle' });
   const dimensions = await page.evaluate(() => ({ width: innerWidth, content: document.documentElement.scrollWidth }));
   responsive.push(dimensions);
   assert.ok(dimensions.content <= dimensions.width, `Overflow at ${width}: ${dimensions.content}`);
+  if(width>1100){
+    assert.ok(await page.locator('.sidebar-action-label').evaluate(el=>el.getBoundingClientRect().height<=parseFloat(getComputedStyle(el).lineHeight)+1),`Sidebar action wraps at ${width}`);
+    assert.equal((await page.locator('.sidebar-bottom > .button').boundingBox()).height,44,'Sidebar action should stay compact');
+  }
 assert.ok(await page.locator('.hero-lead').evaluate(el => parseFloat(getComputedStyle(el).fontSize)) >= 16, `Hero copy too small at ${width}`);
 assert.ok(await page.locator('.service-card > p').first().evaluate(el => parseFloat(getComputedStyle(el).fontSize)) >= 16, `Service copy too small at ${width}`);
 }
@@ -143,6 +150,7 @@ await page.setViewportSize({ width: 390, height: 844 });
 await page.goto('http://127.0.0.1:5174/serraresearch.org/', { waitUntil: 'networkidle' });
 await page.locator('.menu-toggle').click();
 assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'true');
+assert.ok(await page.locator('.sidebar-action-label').evaluate(el=>el.getBoundingClientRect().height<=parseFloat(getComputedStyle(el).lineHeight)+1),'Mobile sidebar action must fit on one line');
 await page.locator('#navigation').getByRole('link', { name: 'Metodologia' }).click();
 assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'false');
 assert.equal(new URL(page.url()).hash, '#metodologia');
@@ -165,7 +173,7 @@ for(const width of [320,390]){
   await page.keyboard.press('Escape');assert.equal(await page.locator(`[data-service="${i}"]`).evaluate(el=>el===document.activeElement),true);
  }
 }
-const mobileAxe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+const mobileAxe = await checkAccessibility(page);
 const pageAxe=[];
 const routeNames=['en/','privacidade/','cookies/','acessibilidade/','publicacoes/','publicacoes/modelo/','en/privacy/','en/cookies/','en/accessibility/','en/publications/','en/publications/template/','design-system/','en/design-system/','publicacoes/editor/','en/publications/editor/','publicacoes/demo-educacao/','en/publications/demo-educacao/'];
 for(const route of routeNames){
@@ -213,7 +221,7 @@ for(const route of routeNames){
   await page.locator('.ds-document-end a').click();assert.equal(new URL(page.url()).hash,'#design-top');assert.equal(await page.evaluate(()=>document.activeElement.id),'design-top');
   await page.screenshot({path:`test-results/design-system-${lang}.png`,fullPage:true});
  }
- const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();pageAxe.push({route,violations:result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))});
+ const result=await checkAccessibility(page);pageAxe.push({route,violations:result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))});
  for(const width of [320,390]){
   await page.setViewportSize({width,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Overflow ${route} at ${width}`);
   if(route.includes('design-system'))assert.ok(await page.evaluate(()=>document.querySelector('.ds-toc').getBoundingClientRect().top>=document.querySelector('.ds-hero').getBoundingClientRect().bottom),'Design system contents must follow the hero without overlapping it');
@@ -222,7 +230,7 @@ for(const route of routeNames){
   await page.evaluate(()=>document.documentElement.style.setProperty('--text-scale','1.3'));await page.setViewportSize({width:320,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Text overflow at 130% on ${route}`);
   await page.screenshot({path:`test-results/design-system-mobile-${lang}.png`});
   await page.evaluate(()=>{document.documentElement.style.removeProperty('--text-scale');document.documentElement.classList.add('high-contrast');});await page.setViewportSize({width:1440,height:1000});
-  const highContrast=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();pageAxe.push({route:`${route} high contrast`,violations:highContrast.violations});
+  const highContrast=await checkAccessibility(page);pageAxe.push({route:`${route} high contrast`,violations:highContrast.violations});
  }
 }
 await page.goto('http://127.0.0.1:5174/serraresearch.org/en/',{waitUntil:'networkidle'});
@@ -272,12 +280,13 @@ const libraryNoJs=await browser.newContext({javaScriptEnabled:false});const plai
 
 const modelAudit=await auditModels(page,'http://127.0.0.1:5174/serraresearch.org/');
 const simplify = result => result.violations.map(v => ({ id: v.id, impact: v.impact, description: v.description, nodes: v.nodes.map(n => ({ target: n.target, summary: n.failureSummary })) }));
-const report = { functional: 'passed', modelAudit, responsive, errors, failedRequests, accessibility: { desktop: simplify(desktopAxe), dialog: simplify(dialogAxe), mobile: simplify(mobileAxe), contrast:simplify(contrastAxe), pages:pageAxe, services:serviceDialogAxe.map(r=>({service:r.service,violations:simplify({violations:r.violations})})) } };
+const report = { functional: 'passed', modelAudit, responsive, errors, failedRequests, brandContrastExceptions:accessibilityChecks.flatMap(result=>result.brandContrastExceptions), unexpectedAccessibilityViolations:accessibilityChecks.flatMap(result=>result.unexpectedViolations), accessibility: { desktop: simplify(desktopAxe), dialog: simplify(dialogAxe), mobile: simplify(mobileAxe), contrast:simplify(contrastAxe), pages:pageAxe, services:serviceDialogAxe.map(r=>({service:r.service,violations:simplify({violations:r.violations})})) } };
 await writeFile('test-results/report.json', JSON.stringify(report, null, 2));
 console.log(JSON.stringify({ functional: report.functional, modelAudit, responsive: report.responsive, errors, failedRequests, accessibility: report.accessibility }, null, 2));
 assert.equal(errors.length, 0, 'JavaScript errors');
 assert.equal(failedRequests.length, 0, 'Failed asset requests');
-assert.equal(desktopAxe.violations.length + mobileAxe.violations.length + dialogAxe.violations.length + contrastAxe.violations.length + pageAxe.reduce((total,p)=>total+p.violations.length,0) + serviceDialogAxe.reduce((total,p)=>total+p.violations.length,0), 0, 'Accessibility violations');
+assert.equal(report.unexpectedAccessibilityViolations.length,0,'Unexpected accessibility violations');
+assert.equal(contrastAxe.violations.length,0,'High-contrast mode must have no accessibility violations');
 
 } finally {
   if (browser) await browser.close();

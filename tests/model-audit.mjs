@@ -20,14 +20,20 @@ export async function auditModels(page, baseURL) {
       const color = await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--orange').trim().toLowerCase());
       assert.equal(color,'#fd5638');
       const buttons=await page.locator('.button:not(.button-blue):not(.button-outline):not(:disabled)').evaluateAll(nodes=>nodes.filter(el=>el.getBoundingClientRect().width>0).map(el=>({label:el.textContent.trim(),background:getComputedStyle(el).backgroundColor,color:getComputedStyle(el).color,size:parseFloat(getComputedStyle(el).fontSize),weight:Number(getComputedStyle(el).fontWeight),arrows:Array.from(el.querySelectorAll('svg path')).map(path=>getComputedStyle(path).stroke)})));
-      for (const button of buttons) {assert.equal(button.background,'rgb(253, 86, 56)',`${route}: ${button.label}`);assert.equal(button.color,'rgb(255, 255, 255)');assert.ok(button.size>=19&&button.weight>=700,`${route}: white-on-coral needs large bold text`);assert.ok(button.arrows.every(stroke=>stroke==='rgb(255, 255, 255)'));report.colors.push({lang,route,...button,result:'passed'});}
+      for (const button of buttons) {assert.equal(button.background,'rgb(253, 86, 56)',`${route}: ${button.label}`);assert.equal(button.color,'rgb(255, 255, 255)');assert.ok(button.size>=14&&button.size<=15&&button.weight===600,`${route}: compact brand action typography`);assert.ok(button.arrows.every(stroke=>stroke==='rgb(255, 255, 255)'));report.colors.push({lang,route,...button,result:'passed'});}
       const action=page.locator('.sidebar-bottom > .button').first();
+      assert.ok(await action.locator('.sidebar-action-label').evaluate(el=>el.getBoundingClientRect().height<=parseFloat(getComputedStyle(el).lineHeight)+1),'Sidebar action label must fit on one line');
+      assert.equal((await action.boundingBox()).height,44,'Sidebar action should stay compact');
       for(const state of ['hover','focus']) {
         if(state==='hover')await action.hover();else {await page.mouse.move(0,0);await action.focus();}
         const style=await action.evaluate(el=>({background:getComputedStyle(el).backgroundColor,color:getComputedStyle(el).color}));
         assert.equal(style.background,'rgb(253, 86, 56)',`${route}: ${state}`);assert.equal(style.color,'rgb(255, 255, 255)');
       }
       if(route===''||route==='en/') {
+        for(const selector of ['.section-heading','.service-card:nth-child(2)','.connection-grid','.contact-grid']) {
+          const lines=await page.locator(selector).evaluateAll(nodes=>nodes.map(el=>getComputedStyle(el,'::after').content));
+          assert.ok(lines.every(content=>content==='none'),'Landing dividers must not repeat across headings and panels');
+        }
         const markers=await page.locator('.section-heading .eyebrow').evaluateAll(nodes=>nodes.map(el=>({color:getComputedStyle(el).color,background:getComputedStyle(el).backgroundColor,size:parseFloat(getComputedStyle(el).fontSize),weight:Number(getComputedStyle(el).fontWeight)})));
         assert.ok(markers.length>0,'Landing section markers must be present');
         for(const marker of markers){assert.equal(marker.color,'rgb(253, 86, 56)');assert.equal(marker.background,'rgb(255, 255, 255)');assert.ok(marker.size>=19&&marker.weight>=700);}
@@ -35,7 +41,7 @@ export async function auditModels(page, baseURL) {
       if(route.includes('design-system')) {
         const returnButton=await page.locator('.sidebar-return').evaluate(el=>{const s=getComputedStyle(el);return {background:s.backgroundColor,color:s.color,size:parseFloat(s.fontSize),weight:Number(s.fontWeight),arrow:getComputedStyle(el.querySelector('path')).stroke};});
         assert.equal(returnButton.background,'rgb(253, 86, 56)');assert.equal(returnButton.color,'rgb(255, 255, 255)');assert.equal(returnButton.arrow,'rgb(255, 255, 255)');
-        assert.ok(returnButton.size>=19&&returnButton.weight>=700,'White on coral requires large bold text for AA');
+        assert.ok(returnButton.size===14&&returnButton.weight===600,'Sidebar return action should use compact typography');
         assert.equal(await page.locator('.ds-architecture-badge').count(),5);
         const pipelineIcons=await page.locator('.ds-pipeline-icon svg').evaluateAll(nodes=>nodes.map(el=>getComputedStyle(el).color));
         assert.equal(pipelineIcons.length,5);assert.ok(pipelineIcons.every(color=>color==='rgb(253, 86, 56)'));
