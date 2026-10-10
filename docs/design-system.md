@@ -18,11 +18,11 @@ O índice lateral acompanha somente os capítulos principais; as subseções imp
 
 ## Exemplos e downloads
 
-As cinco ilustrações SVG são locais, sem scripts, fontes externas ou a marca alternativa do anexo. Os gráficos são demonstrações sintéticas, acompanhadas de tabelas e CSV. Não representam resultados, significância estatística, amostras reais ou desempenho da Serra Research. A faixa temporal é ilustrativa, não um intervalo de confiança calculado.
+As nove ilustrações SVG (cinco geométricas e quatro espectrais) são locais, sem scripts, fontes externas ou a marca alternativa do anexo. Os gráficos são demonstrações sintéticas, acompanhadas de tabelas e CSV. Não representam resultados, significância estatística, amostras reais ou desempenho da Serra Research. A faixa temporal é ilustrativa, não um intervalo de confiança calculado.
 
 O mapa é SVG local, com camadas e zoom por teclado, sem incorporar serviço de terceiros ou transmitir coordenadas. O estilo Google Maps usa seu formato `stylers`; o estilo MapLibre usa versão 8 e uma geometria GeoJSON explicitamente demonstrativa. Os arquivos são separados e não intercambiáveis. Integrações reais precisam de fontes, projeções, licenças e configuração adequadas ao projeto.
 
-O kit de papelaria contém sete SVGs, nove PDFs, timbrados HTML editáveis em português/inglês, referência de cores e checklist. Os arquivos têm fontes locais incorporadas e dimensões nominais. São protótipos sRGB: não incluem PDF/X, perfil ICC, faca industrial, credenciais válidas ou certificação. Conversões CMYK são aproximações matemáticas, sem equivalência Pantone presumida. A produção física exige prova e preparo com o fornecedor.
+O kit de papelaria contém nove SVGs, onze PDFs, timbrados HTML editáveis em português/inglês, referência de cores e checklist. Os arquivos têm fontes locais incorporadas e dimensões nominais. São protótipos sRGB: não incluem PDF/X, perfil ICC, faca industrial, credenciais válidas ou certificação. Conversões CMYK são aproximações matemáticas, sem equivalência Pantone presumida. A produção física exige prova e preparo com o fornecedor.
 
 Para regenerar os SVGs e PDFs com o Chromium do ambiente:
 
@@ -41,3 +41,5 @@ PY
 ```
 
 Os arquivos gerados são versionados; o build e o deploy não dependem dessa etapa. Downloads em `/design/` ficam fora do sitemap. Os testes verificam capítulos, links, formatos dos dados, interação das camadas, marca existente, movimento reduzido, responsividade e contraste automatizado nas duas línguas, incluindo alto contraste.
+
+O inventário dos anexos e a matriz de correspondência estão em [model-audit.md](model-audit.md) e no final da página do design system. `npm test` verifica os destinos em português e inglês, as cores calculadas e os arquivos de download.

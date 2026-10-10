@@ -1,0 +1,1606 @@
+{
+  "generated": "2026-10-10",
+  "files": [
+    {
+      "attachment": 1,
+      "file": "stitch_serra_research_design_system/serra_research_wordmark_clean/code.html",
+      "sha256": "5269d130236dc08ab19a51e6d40ab170de6877e3b5e19e55821b812d0086e368",
+      "headings": []
+    },
+    {
+      "attachment": 1,
+      "file": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sha256": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "headings": [
+        "Inteligência territorial, dados e rigor científico para decisões estratégicas sustentáveis.",
+        "Impacto Mensurável e Escopo",
+        "Nossa especialização",
+        "Inteligência Territorial & Sensoriamento Remoto",
+        "Engenharia de Dados & Modelagem Climática",
+        "Métricas ESG e Validação de Carbono",
+        "Diagnósticos Socioambientais e Governança",
+        "Como trabalhamos com você",
+        "Mapeamento Inicial",
+        "Harmonização",
+        "Simulação Preditiva",
+        "Revisão por Pares",
+        "Painel & Laudo",
+        "Modelagem Geoestatística de Resiliência Hídrica em Bacias Transfronteiriças sob Pressão Extrema",
+        "Organizações que confiam na modelagem da Serra Research",
+        "Inicie seu diagnóstico territorial com a equipe sênior da Serra Research."
+      ]
+    },
+    {
+      "attachment": 1,
+      "file": "stitch_serra_research_design_system/metodologia_equipe_serra_research/code.html",
+      "sha256": "ad89cbec4328454a44e1326aca726c9938b818d75daa77726d5964baf2065451",
+      "headings": [
+        "Rigor Metodológico &Capital Intelectual.",
+        "Ciclo de Engenharia de Dados & Validação",
+        "Levantamento de Base & Espectro",
+        "Curadoria & Limpeza Geoespacial",
+        "Modelagem & Inteligência Territorial",
+        "Validação de Campo & Parecer",
+        "Entrega em API & Relatórios",
+        "Pessoas, cientistas e engenheiros",
+        "Métricas de Tração Científica",
+        "Pilares de Qualidade & Protocolos",
+        "Stack Técnico & Ferramental Analítico",
+        "Precisa de modelagem territorial dedicada?"
+      ]
+    },
+    {
+      "attachment": 1,
+      "file": "stitch_serra_research_design_system/cases_impacto_serra_research/code.html",
+      "sha256": "daaca4aa766f0382ad10b65547b7639d2fd238ba64a9b4471bf850c8afb5d0e4",
+      "headings": [
+        "Evidência em Escala: Projetos e Impacto Mensurável",
+        "Metodologia Paramétrica com Validação Satelital Tripla",
+        "Tecnologia Móvel e Telemetria em Ambientes Críticos",
+        "Calibração de Solo e Espectrometria",
+        "Perfilamento Canópico LiDAR 3D",
+        "Processamento Espacial e GeoAI",
+        "Confiado por líderes que transformam o território",
+        "A Validação por Quem Lidera Operações Críticas",
+        "Necessita da documentação metodológica na íntegra?"
+      ]
+    },
+    {
+      "attachment": 1,
+      "file": "stitch_serra_research_design_system/contato_serra_research/code.html",
+      "sha256": "7a2a78e358287d914dc43d247b6e43eaff3c79cccd393afba731d1cfeffce2d2",
+      "headings": [
+        "Iniciação de Projetos & Consulta Técnica",
+        "Briefing Paramétrico de Engenharia e Pesquisa",
+        "Se você tem dúvidas conceituais ou dados complexos, fale com nossa liderança.",
+        "Perguntas Frequentes sobre Contratação"
+      ]
+    },
+    {
+      "attachment": 1,
+      "file": "stitch_serra_research_design_system/publica_es_whitepapers_serra_research/code.html",
+      "sha256": "2d0b6ae41f57ed3c821e3d115c2c2c7e9624331a495bf9424c3113837fff0c08",
+      "headings": [
+        "Scientific Publications & Technical Papers",
+        "Modelagem Preditiva de Estresse Hídrico e Resiliência de Biomassa em Bacias Hidrográficas do Cerrado: Uma Abordagem Multiespectral com Aprendizado Profundo",
+        "Estudos Recentes & Relatórios Técnicos",
+        "Validação de Adicionalidade e Permanência em Créditos de Carbono Florestal com Lidar Espacial",
+        "Detecção Precoce de Degradação Florestal com Radares de Abertura Sintética (SAR) Sentinel-1",
+        "Econometria Espacial Aplicada a Corredores de Transporte e Transição de Biomassa",
+        "Taxonomia de Resiliência Microclimática em Plantios Agroflorestais Regenerativos",
+        "Fundamentos de IA Causal para Políticas de Demarcação e Mitigação de Conflito Fundiário",
+        "Serra-HydroBench: Conjunto de Dados Anotados de 5.000 Reservatórios Artificiais",
+        "Open Science & Repositórios de Código",
+        "Receba Nossos Briefings Técnicos e Pré-Impressões"
+      ]
+    },
+    {
+      "attachment": 2,
+      "file": "code.html",
+      "sha256": "2d0b6ae41f57ed3c821e3d115c2c2c7e9624331a495bf9424c3113837fff0c08",
+      "headings": [
+        "Scientific Publications & Technical Papers",
+        "Modelagem Preditiva de Estresse Hídrico e Resiliência de Biomassa em Bacias Hidrográficas do Cerrado: Uma Abordagem Multiespectral com Aprendizado Profundo",
+        "Estudos Recentes & Relatórios Técnicos",
+        "Validação de Adicionalidade e Permanência em Créditos de Carbono Florestal com Lidar Espacial",
+        "Detecção Precoce de Degradação Florestal com Radares de Abertura Sintética (SAR) Sentinel-1",
+        "Econometria Espacial Aplicada a Corredores de Transporte e Transição de Biomassa",
+        "Taxonomia de Resiliência Microclimática em Plantios Agroflorestais Regenerativos",
+        "Fundamentos de IA Causal para Políticas de Demarcação e Mitigação de Conflito Fundiário",
+        "Serra-HydroBench: Conjunto de Dados Anotados de 5.000 Reservatórios Artificiais",
+        "Open Science & Repositórios de Código",
+        "Receba Nossos Briefings Técnicos e Pré-Impressões"
+      ]
+    },
+    {
+      "attachment": 3,
+      "file": "code.html",
+      "sha256": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "headings": [
+        "Design System — Ilustração, Visualização de Dados & Aplicações",
+        "Auditoria e Proporção Exata do Logotipo",
+        "straighten Diagrama de Cotas, Micrométricas e Vetorização Canônica",
+        "Sistema de Ilustração & Espectros Multiespectrais",
+        "Orbe Espectral & Sensoriamento",
+        "Camadas Estratigráficas & Solo",
+        "Malha de Coordenadas & Telemetria",
+        "Bacia Hidrográfica & Fractal Strahler",
+        "Órbita Polar & Varredura Satelital",
+        "Taxonomia Multiespectral Restrita",
+        "Infográficos, Diagramas de Sistema & Arquitetura de IA",
+        "Esteira Canônica em 5 Fases de Processamento Territorial",
+        "Arquitetura de Engenharia de Dados: Do Acervo em Papel ao Servidor MCP",
+        "Visualização de Dados (Dataviz Avançado)",
+        "Padronização Cartográfica & Google Maps Platform",
+        "code Especificação JSON de Estilização (Google Maps Platform / MapLibre GL)",
+        "Sistema de Layout & Grid (16-Column Technical Grid)",
+        "Arquitetura de Grid para Terminais Analíticos e Telas Largas",
+        "Printables & Identidade Física Oficial",
+        "Caixa Dossiê Rígida Pericial",
+        "Cartão Técnico de Pesquisador",
+        "Papel Timbrado & Laudo A4",
+        "Caderno Técnico & Whitepaper"
+      ]
+    },
+    {
+      "attachment": 4,
+      "file": "code.html",
+      "sha256": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "headings": [
+        "Papelaria & Identidade Impressa — Serra Research",
+        "Suite Institucional Canônica",
+        "Papel Timbrado A4 & Laudo Técnico Pericial",
+        "Substrato & Fibras",
+        "Offset & Pantone Spot",
+        "Cartões de Visita Técnicos de Pesquisador",
+        "G.F Smith Colorplan 350g/m²",
+        "Envelopes Oficiais DL (110×220mm) & C4 (229×324mm)",
+        "Dossiê Rígido Pericial & Caixa Clamshell",
+        "Pasta de Entrega & Caixa Clamshell",
+        "folder_open Pasta Interna com Vinco Duplo (Lombada 8mm)",
+        "lock Fecho Oculto por Berço Magnético",
+        "pan_tool Hot-Stamping Cego (Blind Deboss)",
+        "Credenciais de Campo & Cartões de Acesso Físico",
+        "Policarbonato 0.76mm",
+        "Chip MIFARE DESFire EV3",
+        "Cordão em Poliéster Reciclado",
+        "Matriz Rigorosa de Conversão Gráfica",
+        "Pacote Master de Pré-Impressão (Print Ready)"
+      ]
+    },
+    {
+      "attachment": 5,
+      "file": "code.html",
+      "sha256": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "headings": [
+        "Papelaria & Identidade Impressa — Serra Research",
+        "Suite Institucional Canônica",
+        "Papel Timbrado A4 & Laudo Técnico Pericial",
+        "Substrato & Fibras",
+        "Offset & Pantone Spot",
+        "Cartões de Visita Técnicos de Pesquisador",
+        "G.F Smith Colorplan 350g/m²",
+        "Envelopes Oficiais DL (110×220mm) & C4 (229×324mm)",
+        "Dossiê Rígido Pericial & Caixa Clamshell",
+        "Pasta de Entrega & Caixa Clamshell",
+        "folder_open Pasta Interna com Vinco Duplo (Lombada 8mm)",
+        "lock Fecho Oculto por Berço Magnético",
+        "pan_tool Hot-Stamping Cego (Blind Deboss)",
+        "Credenciais de Campo & Cartões de Acesso Físico",
+        "Policarbonato 0.76mm",
+        "Chip MIFARE DESFire EV3",
+        "Cordão em Poliéster Reciclado",
+        "Matriz Rigorosa de Conversão Gráfica",
+        "Pacote Master de Pré-Impressão (Print Ready)"
+      ]
+    },
+    {
+      "attachment": 6,
+      "file": "code.html",
+      "sha256": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "headings": [
+        "Design System — Ilustração, Visualização de Dados & Aplicações",
+        "Auditoria e Proporção Exata do Logotipo",
+        "straighten Diagrama de Cotas, Micrométricas e Vetorização",
+        "Sistema de Ilustração (Illustration System)",
+        "Orbe Espectral & Sensoriamento",
+        "Camadas Estratigráficas & Terreno",
+        "Malha de Coordenadas & Telemetria",
+        "Diversidade Cromática & Espectros Multiespectrais",
+        "Hiperespectral & Vegetação",
+        "Dinâmica Hidrológica & Bacias",
+        "Anomalias Térmicas & Emissões",
+        "Radar SAR & Geologia Estrutural",
+        "Matriz Semântica de Tokens Multicromáticos para Ilustração Científica",
+        "Infográficos & Diagramas de Sistema (Infographics)",
+        "Esteira de Processamento de Evidências Territoriais",
+        "Visualização de Dados (Data Visualization System)",
+        "Guia de Tokens de Cores para Dataviz & Acessibilidade",
+        "Gráficos Avançados & Rigor Multivariado",
+        "Discriminação de Paletas Avançadas para Dataviz & Conformidade de Contraste",
+        "Sistema de Layout & Grid (16-Column Technical Grid)",
+        "Arquitetura de Grid para Terminais Analíticos e Telas Largas",
+        "Printables & Materiais Físicos (Editorial Branding)",
+        "Papel Timbrado Técnico A4",
+        "Capa de Dossiê & Whitepaper Científico"
+      ]
+    },
+    {
+      "attachment": "texto-colado",
+      "file": "Texto colado.txt",
+      "sha256": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "headings": [
+        "Scientific Publications & Technical Papers",
+        "Modelagem Preditiva de Estresse Hídrico e Resiliência de Biomassa em Bacias Hidrográficas do Cerrado: Uma Abordagem Multiespectral com Aprendizado Profundo",
+        "Estudos Recentes & Relatórios Técnicos",
+        "Validação de Adicionalidade e Permanência em Créditos de Carbono Florestal com Lidar Espacial",
+        "Detecção Precoce de Degradação Florestal com Radares de Abertura Sintética (SAR) Sentinel-1",
+        "Econometria Espacial Aplicada a Corredores de Transporte e Transição de Biomassa",
+        "Taxonomia de Resiliência Microclimática em Plantios Agroflorestais Regenerativos",
+        "Fundamentos de IA Causal para Políticas de Demarcação e Mitigação de Conflito Fundiário",
+        "Serra-HydroBench: Conjunto de Dados Anotados de 5.000 Reservatórios Artificiais",
+        "Open Science & Repositórios de Código",
+        "Receba Nossos Briefings Técnicos e Pré-Impressões",
+        "Evidência em Escala: Projetos e Impacto Mensurável",
+        "Metodologia Paramétrica com Validação Satelital Tripla",
+        "Tecnologia Móvel e Telemetria em Ambientes Críticos",
+        "Calibração de Solo e Espectrometria",
+        "Perfilamento Canópico LiDAR 3D",
+        "Processamento Espacial e GeoAI",
+        "Confiado por líderes que transformam o território",
+        "A Validação por Quem Lidera Operações Críticas",
+        "Necessita da documentação metodológica na íntegra?",
+        "Iniciação de Projetos & Consulta Técnica",
+        "Briefing Paramétrico de Engenharia e Pesquisa",
+        "Se você tem dúvidas conceituais ou dados complexos, fale com nossa liderança.",
+        "Perguntas Frequentes sobre Contratação"
+      ]
+    }
+  ],
+  "uniqueHtmlFiles": 9,
+  "patterns": [
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Inteligência territorial, dados e rigor científico para decisões estratégicas sustentáveis.",
+      "status": "adapted",
+      "route": "",
+      "selector": "#inicio"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Impacto Mensurável e Escopo",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-impact-card"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Nossa especialização",
+      "status": "adapted",
+      "route": "",
+      "selector": "#atuacao"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Inteligência Territorial & Sensoriamento Remoto",
+      "status": "adapted",
+      "route": "",
+      "selector": "#atuacao"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Engenharia de Dados & Modelagem Climática",
+      "status": "adapted",
+      "route": "",
+      "selector": "#atuacao"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Métricas ESG e Validação de Carbono",
+      "status": "adapted",
+      "route": "",
+      "selector": "#atuacao"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Diagnósticos Socioambientais e Governança",
+      "status": "adapted",
+      "route": "",
+      "selector": "#atuacao"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Como trabalhamos com você",
+      "status": "adapted",
+      "route": "",
+      "selector": "#metodologia"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Mapeamento Inicial",
+      "status": "adapted",
+      "route": "",
+      "selector": "#metodologia"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Harmonização",
+      "status": "adapted",
+      "route": "",
+      "selector": "#metodologia"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Simulação Preditiva",
+      "status": "adapted",
+      "route": "",
+      "selector": "#metodologia"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Revisão por Pares",
+      "status": "adapted",
+      "route": "",
+      "selector": "#metodologia"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Painel & Laudo",
+      "status": "adapted",
+      "route": "",
+      "selector": "#metodologia"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Modelagem Geoestatística de Resiliência Hídrica em Bacias Transfronteiriças sob Pressão Extrema",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Organizações que confiam na modelagem da Serra Research",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-partners"
+    },
+    {
+      "source": "stitch_serra_research_design_system/in_cio_serra_research/code.html",
+      "sourceHash": "68dbb7e007d01cf732ad460f7d7aa4dffacfd0dd27402b74d5c9e864d773b54f",
+      "heading": "Inicie seu diagnóstico territorial com a equipe sênior da Serra Research.",
+      "status": "adapted",
+      "route": "",
+      "selector": "#contato"
+    },
+    {
+      "source": "stitch_serra_research_design_system/metodologia_equipe_serra_research/code.html",
+      "sourceHash": "ad89cbec4328454a44e1326aca726c9938b818d75daa77726d5964baf2065451",
+      "heading": "Rigor Metodológico &Capital Intelectual.",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-team-card"
+    },
+    {
+      "source": "stitch_serra_research_design_system/metodologia_equipe_serra_research/code.html",
+      "sourceHash": "ad89cbec4328454a44e1326aca726c9938b818d75daa77726d5964baf2065451",
+      "heading": "Ciclo de Engenharia de Dados & Validação",
+      "status": "adapted",
+      "route": "",
+      "selector": "#atuacao"
+    },
+    {
+      "source": "stitch_serra_research_design_system/metodologia_equipe_serra_research/code.html",
+      "sourceHash": "ad89cbec4328454a44e1326aca726c9938b818d75daa77726d5964baf2065451",
+      "heading": "Levantamento de Base & Espectro",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "stitch_serra_research_design_system/metodologia_equipe_serra_research/code.html",
+      "sourceHash": "ad89cbec4328454a44e1326aca726c9938b818d75daa77726d5964baf2065451",
+      "heading": "Curadoria & Limpeza Geoespacial",
+      "status": "adapted",
+      "route": "",
+      "selector": "#metodologia"
+    },
+    {
+      "source": "stitch_serra_research_design_system/metodologia_equipe_serra_research/code.html",
+      "sourceHash": "ad89cbec4328454a44e1326aca726c9938b818d75daa77726d5964baf2065451",
+      "heading": "Modelagem & Inteligência Territorial",
+      "status": "adapted",
+      "route": "",
+      "selector": "#metodologia"
+    },
+    {
+      "source": "stitch_serra_research_design_system/metodologia_equipe_serra_research/code.html",
+      "sourceHash": "ad89cbec4328454a44e1326aca726c9938b818d75daa77726d5964baf2065451",
+      "heading": "Validação de Campo & Parecer",
+      "status": "adapted",
+      "route": "",
+      "selector": "#metodologia"
+    },
+    {
+      "source": "stitch_serra_research_design_system/metodologia_equipe_serra_research/code.html",
+      "sourceHash": "ad89cbec4328454a44e1326aca726c9938b818d75daa77726d5964baf2065451",
+      "heading": "Entrega em API & Relatórios",
+      "status": "adapted",
+      "route": "",
+      "selector": "#metodologia"
+    },
+    {
+      "source": "stitch_serra_research_design_system/metodologia_equipe_serra_research/code.html",
+      "sourceHash": "ad89cbec4328454a44e1326aca726c9938b818d75daa77726d5964baf2065451",
+      "heading": "Pessoas, cientistas e engenheiros",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-team-card"
+    },
+    {
+      "source": "stitch_serra_research_design_system/metodologia_equipe_serra_research/code.html",
+      "sourceHash": "ad89cbec4328454a44e1326aca726c9938b818d75daa77726d5964baf2065451",
+      "heading": "Métricas de Tração Científica",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-impact-card"
+    },
+    {
+      "source": "stitch_serra_research_design_system/metodologia_equipe_serra_research/code.html",
+      "sourceHash": "ad89cbec4328454a44e1326aca726c9938b818d75daa77726d5964baf2065451",
+      "heading": "Pilares de Qualidade & Protocolos",
+      "status": "adapted",
+      "route": "",
+      "selector": "#metodologia"
+    },
+    {
+      "source": "stitch_serra_research_design_system/metodologia_equipe_serra_research/code.html",
+      "sourceHash": "ad89cbec4328454a44e1326aca726c9938b818d75daa77726d5964baf2065451",
+      "heading": "Stack Técnico & Ferramental Analítico",
+      "status": "adapted",
+      "route": "",
+      "selector": "#dados"
+    },
+    {
+      "source": "stitch_serra_research_design_system/metodologia_equipe_serra_research/code.html",
+      "sourceHash": "ad89cbec4328454a44e1326aca726c9938b818d75daa77726d5964baf2065451",
+      "heading": "Precisa de modelagem territorial dedicada?",
+      "status": "adapted",
+      "route": "",
+      "selector": "#contato"
+    },
+    {
+      "source": "stitch_serra_research_design_system/cases_impacto_serra_research/code.html",
+      "sourceHash": "daaca4aa766f0382ad10b65547b7639d2fd238ba64a9b4471bf850c8afb5d0e4",
+      "heading": "Evidência em Escala: Projetos e Impacto Mensurável",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-impact-card"
+    },
+    {
+      "source": "stitch_serra_research_design_system/cases_impacto_serra_research/code.html",
+      "sourceHash": "daaca4aa766f0382ad10b65547b7639d2fd238ba64a9b4471bf850c8afb5d0e4",
+      "heading": "Metodologia Paramétrica com Validação Satelital Tripla",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-technical-validation"
+    },
+    {
+      "source": "stitch_serra_research_design_system/cases_impacto_serra_research/code.html",
+      "sourceHash": "daaca4aa766f0382ad10b65547b7639d2fd238ba64a9b4471bf850c8afb5d0e4",
+      "heading": "Tecnologia Móvel e Telemetria em Ambientes Críticos",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-technical-validation"
+    },
+    {
+      "source": "stitch_serra_research_design_system/cases_impacto_serra_research/code.html",
+      "sourceHash": "daaca4aa766f0382ad10b65547b7639d2fd238ba64a9b4471bf850c8afb5d0e4",
+      "heading": "Calibração de Solo e Espectrometria",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "stitch_serra_research_design_system/cases_impacto_serra_research/code.html",
+      "sourceHash": "daaca4aa766f0382ad10b65547b7639d2fd238ba64a9b4471bf850c8afb5d0e4",
+      "heading": "Perfilamento Canópico LiDAR 3D",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-technical-validation"
+    },
+    {
+      "source": "stitch_serra_research_design_system/cases_impacto_serra_research/code.html",
+      "sourceHash": "daaca4aa766f0382ad10b65547b7639d2fd238ba64a9b4471bf850c8afb5d0e4",
+      "heading": "Processamento Espacial e GeoAI",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-technical-validation"
+    },
+    {
+      "source": "stitch_serra_research_design_system/cases_impacto_serra_research/code.html",
+      "sourceHash": "daaca4aa766f0382ad10b65547b7639d2fd238ba64a9b4471bf850c8afb5d0e4",
+      "heading": "Confiado por líderes que transformam o território",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-partners"
+    },
+    {
+      "source": "stitch_serra_research_design_system/cases_impacto_serra_research/code.html",
+      "sourceHash": "daaca4aa766f0382ad10b65547b7639d2fd238ba64a9b4471bf850c8afb5d0e4",
+      "heading": "A Validação por Quem Lidera Operações Críticas",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-testimonial"
+    },
+    {
+      "source": "stitch_serra_research_design_system/cases_impacto_serra_research/code.html",
+      "sourceHash": "daaca4aa766f0382ad10b65547b7639d2fd238ba64a9b4471bf850c8afb5d0e4",
+      "heading": "Necessita da documentação metodológica na íntegra?",
+      "status": "adapted",
+      "route": "",
+      "selector": "#contato"
+    },
+    {
+      "source": "stitch_serra_research_design_system/contato_serra_research/code.html",
+      "sourceHash": "7a2a78e358287d914dc43d247b6e43eaff3c79cccd393afba731d1cfeffce2d2",
+      "heading": "Iniciação de Projetos & Consulta Técnica",
+      "status": "adapted",
+      "route": "",
+      "selector": "#contato"
+    },
+    {
+      "source": "stitch_serra_research_design_system/contato_serra_research/code.html",
+      "sourceHash": "7a2a78e358287d914dc43d247b6e43eaff3c79cccd393afba731d1cfeffce2d2",
+      "heading": "Briefing Paramétrico de Engenharia e Pesquisa",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-briefing"
+    },
+    {
+      "source": "stitch_serra_research_design_system/contato_serra_research/code.html",
+      "sourceHash": "7a2a78e358287d914dc43d247b6e43eaff3c79cccd393afba731d1cfeffce2d2",
+      "heading": "Se você tem dúvidas conceituais ou dados complexos, fale com nossa liderança.",
+      "status": "adapted",
+      "route": "",
+      "selector": "#contato"
+    },
+    {
+      "source": "stitch_serra_research_design_system/contato_serra_research/code.html",
+      "sourceHash": "7a2a78e358287d914dc43d247b6e43eaff3c79cccd393afba731d1cfeffce2d2",
+      "heading": "Perguntas Frequentes sobre Contratação",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-faq"
+    },
+    {
+      "source": "stitch_serra_research_design_system/publica_es_whitepapers_serra_research/code.html",
+      "sourceHash": "2d0b6ae41f57ed3c821e3d115c2c2c7e9624331a495bf9424c3113837fff0c08",
+      "heading": "Scientific Publications & Technical Papers",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "stitch_serra_research_design_system/publica_es_whitepapers_serra_research/code.html",
+      "sourceHash": "2d0b6ae41f57ed3c821e3d115c2c2c7e9624331a495bf9424c3113837fff0c08",
+      "heading": "Modelagem Preditiva de Estresse Hídrico e Resiliência de Biomassa em Bacias Hidrográficas do Cerrado: Uma Abordagem Multiespectral com Aprendizado Profundo",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "stitch_serra_research_design_system/publica_es_whitepapers_serra_research/code.html",
+      "sourceHash": "2d0b6ae41f57ed3c821e3d115c2c2c7e9624331a495bf9424c3113837fff0c08",
+      "heading": "Estudos Recentes & Relatórios Técnicos",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "stitch_serra_research_design_system/publica_es_whitepapers_serra_research/code.html",
+      "sourceHash": "2d0b6ae41f57ed3c821e3d115c2c2c7e9624331a495bf9424c3113837fff0c08",
+      "heading": "Validação de Adicionalidade e Permanência em Créditos de Carbono Florestal com Lidar Espacial",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "stitch_serra_research_design_system/publica_es_whitepapers_serra_research/code.html",
+      "sourceHash": "2d0b6ae41f57ed3c821e3d115c2c2c7e9624331a495bf9424c3113837fff0c08",
+      "heading": "Detecção Precoce de Degradação Florestal com Radares de Abertura Sintética (SAR) Sentinel-1",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "stitch_serra_research_design_system/publica_es_whitepapers_serra_research/code.html",
+      "sourceHash": "2d0b6ae41f57ed3c821e3d115c2c2c7e9624331a495bf9424c3113837fff0c08",
+      "heading": "Econometria Espacial Aplicada a Corredores de Transporte e Transição de Biomassa",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "stitch_serra_research_design_system/publica_es_whitepapers_serra_research/code.html",
+      "sourceHash": "2d0b6ae41f57ed3c821e3d115c2c2c7e9624331a495bf9424c3113837fff0c08",
+      "heading": "Taxonomia de Resiliência Microclimática em Plantios Agroflorestais Regenerativos",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "stitch_serra_research_design_system/publica_es_whitepapers_serra_research/code.html",
+      "sourceHash": "2d0b6ae41f57ed3c821e3d115c2c2c7e9624331a495bf9424c3113837fff0c08",
+      "heading": "Fundamentos de IA Causal para Políticas de Demarcação e Mitigação de Conflito Fundiário",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "stitch_serra_research_design_system/publica_es_whitepapers_serra_research/code.html",
+      "sourceHash": "2d0b6ae41f57ed3c821e3d115c2c2c7e9624331a495bf9424c3113837fff0c08",
+      "heading": "Serra-HydroBench: Conjunto de Dados Anotados de 5.000 Reservatórios Artificiais",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "stitch_serra_research_design_system/publica_es_whitepapers_serra_research/code.html",
+      "sourceHash": "2d0b6ae41f57ed3c821e3d115c2c2c7e9624331a495bf9424c3113837fff0c08",
+      "heading": "Open Science & Repositórios de Código",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-open-science"
+    },
+    {
+      "source": "stitch_serra_research_design_system/publica_es_whitepapers_serra_research/code.html",
+      "sourceHash": "2d0b6ae41f57ed3c821e3d115c2c2c7e9624331a495bf9424c3113837fff0c08",
+      "heading": "Receba Nossos Briefings Técnicos e Pré-Impressões",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-newsletter"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Design System — Ilustração, Visualização de Dados & Aplicações",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#design-top"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Auditoria e Proporção Exata do Logotipo",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-logo-construction"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "straighten Diagrama de Cotas, Micrométricas e Vetorização Canônica",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-logo-construction"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Sistema de Ilustração & Espectros Multiespectrais",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Orbe Espectral & Sensoriamento",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Camadas Estratigráficas & Solo",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Malha de Coordenadas & Telemetria",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Bacia Hidrográfica & Fractal Strahler",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Órbita Polar & Varredura Satelital",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Taxonomia Multiespectral Restrita",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Infográficos, Diagramas de Sistema & Arquitetura de IA",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#diagramas"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Esteira Canônica em 5 Fases de Processamento Territorial",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#diagramas"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Arquitetura de Engenharia de Dados: Do Acervo em Papel ao Servidor MCP",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#diagramas"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Visualização de Dados (Dataviz Avançado)",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#dataviz"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Padronização Cartográfica & Google Maps Platform",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#cartografia"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "code Especificação JSON de Estilização (Google Maps Platform / MapLibre GL)",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#cartografia"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Sistema de Layout & Grid (16-Column Technical Grid)",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#layout"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Arquitetura de Grid para Terminais Analíticos e Telas Largas",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#layout"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Printables & Identidade Física Oficial",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#papelaria"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Caixa Dossiê Rígida Pericial",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-dossies"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Cartão Técnico de Pesquisador",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-cartoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Papel Timbrado & Laudo A4",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-timbrado"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "642c13d385d6846ca0a7ef341b39fbd7a97ab4f138d8be08445e7a2a0363d36b",
+      "heading": "Caderno Técnico & Whitepaper",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#model-print-covers"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Papelaria & Identidade Impressa — Serra Research",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#papelaria"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Suite Institucional Canônica",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#papelaria"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Papel Timbrado A4 & Laudo Técnico Pericial",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-timbrado"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Substrato & Fibras",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-timbrado"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Offset & Pantone Spot",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-timbrado"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Cartões de Visita Técnicos de Pesquisador",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-cartoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "G.F Smith Colorplan 350g/m²",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-cartoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Envelopes Oficiais DL (110×220mm) & C4 (229×324mm)",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#print-envelopes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Dossiê Rígido Pericial & Caixa Clamshell",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-dossies"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Pasta de Entrega & Caixa Clamshell",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-dossies"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "folder_open Pasta Interna com Vinco Duplo (Lombada 8mm)",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-dossies"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "lock Fecho Oculto por Berço Magnético",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-dossies"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "pan_tool Hot-Stamping Cego (Blind Deboss)",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-dossies"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Credenciais de Campo & Cartões de Acesso Físico",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-credenciais"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Policarbonato 0.76mm",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-credenciais"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Chip MIFARE DESFire EV3",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-credenciais"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Cordão em Poliéster Reciclado",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-credenciais"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Matriz Rigorosa de Conversão Gráfica",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-conversao"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "ed45e24d29965937f2cf27bc9fa6d36be0c80791fe16e5f35284ebd0c9a13854",
+      "heading": "Pacote Master de Pré-Impressão (Print Ready)",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-pre-impressao"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Design System — Ilustração, Visualização de Dados & Aplicações",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#design-top"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Auditoria e Proporção Exata do Logotipo",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-logo-construction"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "straighten Diagrama de Cotas, Micrométricas e Vetorização",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-logo-construction"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Sistema de Ilustração (Illustration System)",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Orbe Espectral & Sensoriamento",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Camadas Estratigráficas & Terreno",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Malha de Coordenadas & Telemetria",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Diversidade Cromática & Espectros Multiespectrais",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#spectral-families"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Hiperespectral & Vegetação",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#spectral-families"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Dinâmica Hidrológica & Bacias",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#spectral-families"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Anomalias Térmicas & Emissões",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#spectral-families"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Radar SAR & Geologia Estrutural",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#spectral-families"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Matriz Semântica de Tokens Multicromáticos para Ilustração Científica",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#spectral-token-matrix"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Infográficos & Diagramas de Sistema (Infographics)",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#diagramas"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Esteira de Processamento de Evidências Territoriais",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#diagramas"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Visualização de Dados (Data Visualization System)",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#dataviz"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Guia de Tokens de Cores para Dataviz & Acessibilidade",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#dataviz-palette-guide"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Gráficos Avançados & Rigor Multivariado",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#advanced-dataviz"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Discriminação de Paletas Avançadas para Dataviz & Conformidade de Contraste",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#dataviz-palette-guide"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Sistema de Layout & Grid (16-Column Technical Grid)",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#layout"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Arquitetura de Grid para Terminais Analíticos e Telas Largas",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#layout"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Printables & Materiais Físicos (Editorial Branding)",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#papelaria"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Papel Timbrado Técnico A4",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-timbrado"
+    },
+    {
+      "source": "code.html",
+      "sourceHash": "29dcf0ccdda95277d6cc77a1621ce6706b4133fcfc0b74faa567566e333bf8a7",
+      "heading": "Capa de Dossiê & Whitepaper Científico",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-dossies"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Scientific Publications & Technical Papers",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Modelagem Preditiva de Estresse Hídrico e Resiliência de Biomassa em Bacias Hidrográficas do Cerrado: Uma Abordagem Multiespectral com Aprendizado Profundo",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Estudos Recentes & Relatórios Técnicos",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Validação de Adicionalidade e Permanência em Créditos de Carbono Florestal com Lidar Espacial",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Detecção Precoce de Degradação Florestal com Radares de Abertura Sintética (SAR) Sentinel-1",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Econometria Espacial Aplicada a Corredores de Transporte e Transição de Biomassa",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Taxonomia de Resiliência Microclimática em Plantios Agroflorestais Regenerativos",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Fundamentos de IA Causal para Políticas de Demarcação e Mitigação de Conflito Fundiário",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Serra-HydroBench: Conjunto de Dados Anotados de 5.000 Reservatórios Artificiais",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ""
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Open Science & Repositórios de Código",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-open-science"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Receba Nossos Briefings Técnicos e Pré-Impressões",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-newsletter"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Evidência em Escala: Projetos e Impacto Mensurável",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-impact-card"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Metodologia Paramétrica com Validação Satelital Tripla",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-technical-validation"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Tecnologia Móvel e Telemetria em Ambientes Críticos",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-technical-validation"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Calibração de Solo e Espectrometria",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#ilustracoes"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Perfilamento Canópico LiDAR 3D",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-technical-validation"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Processamento Espacial e GeoAI",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-technical-validation"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Confiado por líderes que transformam o território",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-partners"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "A Validação por Quem Lidera Operações Críticas",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-testimonial"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Necessita da documentação metodológica na íntegra?",
+      "status": "adapted",
+      "route": "",
+      "selector": "#contato"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Iniciação de Projetos & Consulta Técnica",
+      "status": "adapted",
+      "route": "",
+      "selector": "#contato"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Briefing Paramétrico de Engenharia e Pesquisa",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-briefing"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Se você tem dúvidas conceituais ou dados complexos, fale com nossa liderança.",
+      "status": "adapted",
+      "route": "",
+      "selector": "#contato"
+    },
+    {
+      "source": "Texto colado.txt",
+      "sourceHash": "1ec9fa4840ec21986d3930d8b71328c19f7f519d5d6794e2b0c48917838c3c13",
+      "heading": "Perguntas Frequentes sobre Contratação",
+      "status": "example",
+      "route": "design-system/",
+      "selector": "#model-faq"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Quatro ilustrações espectrais completas",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#spectral-families .ds-spectrum-card"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Dispersão OLS e densidades KDE",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#chart-scatter-kde"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Decomposição em três trilhas",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#chart-decomposition"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Curva de duração de vazão",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#chart-flow-duration"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Matriz territorial sequencial",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#chart-severity"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Paletas com contraste medido",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#dataviz-palette-guide"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Diagrama Mermaid exportável",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "a[href$=\"territorial-pipeline.mmd\"]"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Arquitetura MCP com cinco etiquetas",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": ".ds-architecture-badge"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Wordmark existente",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#model-logo-construction"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Heatmap 6 × 6",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#dataviz .ds-heatmap"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Ridgeline, medianas e legenda",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#dataviz .ds-chart:nth-child(2) .ds-chart-annotation"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Série temporal, faixa e anotação",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#dataviz .ds-chart:nth-child(3) .ds-chart-annotation"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Radar, séries e legendas",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": ".ds-radar-svg"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Rótulo SONDA Z-04",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "img[alt=\"SONDA Z-04\"]"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Rótulo EXUTÓRIO Q50",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "img[alt=\"EXUTÓRIO Q50\"]"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Rótulo SWATH: 290 KM",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "img[alt=\"SWATH: 290 KM\"]"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Busca, filtros e ordenação de publicações",
+      "status": "implemented",
+      "route": "publicacoes/",
+      "selector": ".library-filter-panel"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Destaque, ficha e gráfico de publicação",
+      "status": "adapted",
+      "route": "publicacoes/",
+      "selector": ".research-feature-panel"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Detalhe científico e metadados",
+      "status": "adapted",
+      "route": "publicacoes/modelo/",
+      "selector": ".publication-breadcrumbs"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Preparação de publicação",
+      "status": "implemented",
+      "route": "publicacoes/editor/",
+      "selector": "main"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Capa de caderno e pasta com bolso",
+      "status": "implemented",
+      "route": "design-system/",
+      "selector": "#model-print-covers"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Pacote de papelaria para download",
+      "status": "adapted",
+      "route": "design-system/",
+      "selector": "#print-pre-impressao a[download]"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Formulário institucional",
+      "status": "adapted",
+      "route": "",
+      "selector": "#contact-form"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Linha de base e microdados",
+      "status": "adapted",
+      "route": "",
+      "selector": "#dados"
+    },
+    {
+      "source": "detalhes-visuais-dos-modelos",
+      "sourceHash": "",
+      "heading": "Contato, rodapé e políticas",
+      "status": "adapted",
+      "route": "",
+      "selector": ".footer-grid"
+    }
+  ],
+  "limitations": [
+    "Os exemplos de equipe, organizações, depoimentos, métricas e newsletter existem como componentes de demonstração; não são declarações institucionais.",
+    "Selos ISO/FSC, credenciais profissionais, DOI, ORCID, citações e medições fictícias não foram copiados como fatos.",
+    "Envio de formulários, newsletter, upload, analytics e mapas externos não possuem backend ou integração ativa.",
+    "SVG/PDF de papelaria são modelos sRGB, sem PDF/X, perfil ICC ou faca industrial.",
+    "Fotografias de referência foram reinterpretadas como mockups locais; não são reproduções fotográficas literais."
+  ]
+}

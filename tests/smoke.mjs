@@ -1,3 +1,4 @@
+import { auditModels } from './model-audit.mjs';
 import { chromium } from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 import assert from 'node:assert/strict';
@@ -51,7 +52,7 @@ const desktopAxe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa',
 const serviceDialogAxe=[];
 assert.equal(await page.locator('.hero-actions .button-blue').innerText(),'Nosso método');
 assert.equal(await page.locator('.hero-actions .button-blue').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(0, 87, 255)');
-assert.equal(await page.locator('.hero-actions .button').first().evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(255, 137, 107)');
+assert.equal(await page.locator('.hero-actions .button').first().evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(253, 86, 56)');
 for (let i = 0; i < 4; i++) {
   await page.locator(`[data-service="${i}"]`).click();
   await page.locator('#detail-dialog').waitFor({ state: 'visible' });
@@ -188,7 +189,7 @@ for(const route of routeNames){
  }
  if(route.includes('design-system')){
   assert.equal(await page.locator('.ds-toc a').count(),17);assert.equal(await page.locator('.ds-section').count(),17);
-  assert.equal(await page.locator('.sidebar-docs #navigation a').count(),17);assert.equal(await page.locator('.ds-illustration-stage img').count(),5);assert.equal(await page.locator('.ds-chart').count(),4);assert.equal(await page.locator('.ds-stationery .wordmark').count(),3);
+  assert.equal(await page.locator('.sidebar-docs #navigation a').count(),17);assert.equal(await page.locator('.ds-illustration-stage img').count(),9);assert.equal(await page.locator('.ds-chart').count(),8);assert.equal(await page.locator('.ds-stationery .wordmark').count(),3);
   const tokens=await (await fetch('http://127.0.0.1:5174/serraresearch.org/design-tokens.json')).json();
   for(const [key,variable] of [['actionOrange','--action-orange'],['buttonInk','--button-ink'],['dataBlue','--data-blue'],['muted','--muted'],['charcoal','--charcoal']])assert.equal(await page.evaluate(v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim(),variable),tokens.colors[key]);
   assert.match(await page.locator('#cores').innerText(),/4\.5:1|4,5:1/);
@@ -269,10 +270,11 @@ assert.ok(!(await page.evaluate(()=>Object.values(localStorage).join(' '))).incl
 assert.ok(!sitemap.includes('/demo-')&&!sitemap.includes('/editor/'));
 const libraryNoJs=await browser.newContext({javaScriptEnabled:false});const plain=await libraryNoJs.newPage();await plain.goto('http://127.0.0.1:5174/serraresearch.org/publicacoes/');assert.equal(await plain.locator('.research-record:visible').count(),6);assert.equal(await plain.locator('#publication-search').isDisabled(),true);await libraryNoJs.close();
 
+const modelAudit=await auditModels(page,'http://127.0.0.1:5174/serraresearch.org/');
 const simplify = result => result.violations.map(v => ({ id: v.id, impact: v.impact, description: v.description, nodes: v.nodes.map(n => ({ target: n.target, summary: n.failureSummary })) }));
-const report = { functional: 'passed', responsive, errors, failedRequests, accessibility: { desktop: simplify(desktopAxe), dialog: simplify(dialogAxe), mobile: simplify(mobileAxe), contrast:simplify(contrastAxe), pages:pageAxe, services:serviceDialogAxe.map(r=>({service:r.service,violations:simplify({violations:r.violations})})) } };
+const report = { functional: 'passed', modelAudit, responsive, errors, failedRequests, accessibility: { desktop: simplify(desktopAxe), dialog: simplify(dialogAxe), mobile: simplify(mobileAxe), contrast:simplify(contrastAxe), pages:pageAxe, services:serviceDialogAxe.map(r=>({service:r.service,violations:simplify({violations:r.violations})})) } };
 await writeFile('test-results/report.json', JSON.stringify(report, null, 2));
-console.log(JSON.stringify({ functional: report.functional, responsive: report.responsive, errors, failedRequests, accessibility: report.accessibility }, null, 2));
+console.log(JSON.stringify({ functional: report.functional, modelAudit, responsive: report.responsive, errors, failedRequests, accessibility: report.accessibility }, null, 2));
 assert.equal(errors.length, 0, 'JavaScript errors');
 assert.equal(failedRequests.length, 0, 'Failed asset requests');
 assert.equal(desktopAxe.violations.length + mobileAxe.violations.length + dialogAxe.violations.length + contrastAxe.violations.length + pageAxe.reduce((total,p)=>total+p.violations.length,0) + serviceDialogAxe.reduce((total,p)=>total+p.violations.length,0), 0, 'Accessibility violations');

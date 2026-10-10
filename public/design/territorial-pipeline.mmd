@@ -1,0 +1,9 @@
+%% Serra Research / Reference architecture, not proof of certification.
+flowchart LR
+  A[Ingestion: public sources, microdata and field collection] --> B[Normalization: harmonization and documentation]
+  B --> C[Modeling: statistics, spatial analysis and scenarios]
+  C --> D[Validation: quality, uncertainty and review]
+  D --> E[Decision: indicators, visualizations and recommendations]
+  classDef stage fill:#F4F5F8,stroke:#DFE1EA,color:#2D3139
+  class A,B,C,D,E stage
+  linkStyle default stroke:#FD5638,stroke-width:1.5px
