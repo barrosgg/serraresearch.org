@@ -189,8 +189,8 @@ html.high-contrast .service-index>span{color:#111!important}
 .footer-nav h2,.footer-links h2{letter-spacing:0;font-size:calc(16px * var(--text-scale,1))}.footer-nav a,.footer-links a,.footer-button{font-size:calc(14px * var(--text-scale,1))}.company-details{font-size:calc(13px * var(--text-scale,1))}
 @media(max-width:600px){.company-details{font-size:calc(12px * var(--text-scale,1))}.footer-nav h2,.footer-links h2{font-size:calc(15px * var(--text-scale,1))}}
 
-/* Botões luminosos com texto escuro e contraste preservado. */
-:root{--action-orange:#fd5638;--button-ink:#3a1b13}
+/* Texto branco nas ações; detalhes pequenos usam sua própria tinta acessível. */
+:root{--action-orange:#fd5638;--button-ink:#ffffff;--coral-detail-ink:#3a1b13}
 .button{color:var(--button-ink)}.button:hover{background:var(--orange);box-shadow:0 8px 22px #fd563826}
 .button-blue{background:var(--data-blue);color:#fff}.button-blue:hover{background:#246eff;box-shadow:0 8px 22px #0057ff25}
 .hero-actions .button-blue{gap:20px}
@@ -251,5 +251,10 @@ html.high-contrast :is(.publication-editorial-guide,.citation-code pre){backgrou
 
 /* Canonical brand orange; darker inks are reserved for readable text and focus. */
 .hero{background:#fff}
-.process li:last-child .step-number{color:var(--button-ink)}
+.process li:last-child .step-number{color:var(--coral-detail-ink)}
 .principle-icon,.service-quality-icon,.ds-pipeline-icon svg{color:var(--orange)}
+/* White on canonical coral requires large bold text (minimum 3:1). */
+.button:not(.button-blue):not(.button-outline):not(:disabled){background:var(--orange);color:var(--button-ink);font-size:calc(19px * var(--text-scale,1));font-weight:700;min-height:54px;padding:14px 22px;gap:16px;line-height:1.35}
+.sidebar-bottom>.button:not(.button-blue):not(.button-outline){font-size:calc(19px * var(--text-scale,1));padding:14px 12px;gap:8px}.sidebar-bottom>.button>span{flex-shrink:0}
+.button{max-width:100%;overflow-wrap:anywhere}
+.section-heading .eyebrow{color:var(--orange);background:#fff;font-size:calc(19px * var(--text-scale,1));font-weight:700;font-family:'Space Grotesk',sans-serif;letter-spacing:.03em;line-height:1.5;width:fit-content;max-width:100%;padding:4px 12px}

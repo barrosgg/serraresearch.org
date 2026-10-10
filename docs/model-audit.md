@@ -22,7 +22,7 @@ O laranja da marca, preenchimentos dos botões ativos, ponto do logotipo, ícone
 
 Tinta coral escura `#B83B24` permanece para texto pequeno, foco e contornos que precisam de mais contraste. Botões desabilitados, modo de alto contraste e estados de erro têm cores semânticas próprias. Transparências, gradientes e sombras derivados do laranja não são novas cores de marca. Azul, verde, amarelo, carmim e índigo representam outras famílias de dados.
 
-`#FD5638` sobre branco tem aproximadamente 3,20:1: atende texto grande, mas não texto pequeno AA nem AAA. O texto dos botões usa `#3A1B13`, com contraste superior a 4,5:1. A documentação calcula os índices em vez de repetir alegações AAA incorretas dos protótipos. O hero da landing page usa fundo branco para manter o contraste mínimo.
+`#FD5638` sobre branco tem aproximadamente 3,20:1: atende texto grande, mas não texto pequeno AA nem AAA. O texto e os ícones dos botões usam `#FFFFFF`, em 19 px e peso 700, atendendo ao mínimo de 3:1 para texto grande. `#3A1B13` permanece como tinta de detalhes pequenos sobre laranja. A documentação calcula os índices em vez de repetir alegações AAA incorretas dos protótipos. O hero da landing page usa fundo branco para manter o contraste mínimo.
 
 ## Integridade dos gráficos e da arquitetura
 
@@ -57,3 +57,5 @@ A suíte existente também verifica navegação, formulários, filtros, editor, 
 Build e suíte completos passaram. Foram conferidos 167 registros em dois idiomas (334 destinos), 42 usos de cor calculada e 58 downloads. As 27 checagens de páginas com axe, além das checagens de landing page, preferências e modais, terminaram sem violações detectadas. Não houve erro de JavaScript nem falha de requisição de assets. O pacote de papelaria foi aberto e seus 26 arquivos comparados byte a byte com os originais.
 
 A conferência final dos ícones da esteira corrigiu uma regra CSS que ainda usava tinta coral escura. Após o ajuste, a auditoria completa de correspondência foi repetida: 334 destinos, 44 checagens de cor e 58 downloads passaram; axe também passou novamente nas duas páginas do design system. O teste inclui explicitamente os cinco ícones em `#FD5638`.
+
+A revisão das ações valida fundo `#FD5638`, texto e setas `#FFFFFF`, tamanho mínimo de 19 px e peso 700, além dos estados de hover e foco. Inclui menu lateral, formulários, publicações e exemplos do design system. Os marcadores de seção da landing page usam o coral canônico sobre branco. A suíte completa passou com 27 checagens de páginas e os quatro modais de atuação sem violações detectadas pelo axe.

@@ -3,6 +3,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 
 // Check reference destinations against rendered pages, not just the inventory.
 export async function auditModels(page, baseURL) {
+  await page.setViewportSize({width:1440,height:1000});
   const audit = JSON.parse(await readFile(new URL('../src/data/model-audit.json', import.meta.url), 'utf8'));
   const routes = {'':'en/', 'design-system/':'en/design-system/', 'publicacoes/':'en/publications/', 'publicacoes/modelo/':'en/publications/template/', 'publicacoes/editor/':'en/publications/editor/'};
   const report = { sourceDocuments:audit.files.length, uniqueHtmlModels:audit.uniqueHtmlFiles, coverage:[], colors:[], assets:[] };
@@ -18,9 +19,23 @@ export async function auditModels(page, baseURL) {
       }
       const color = await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--orange').trim().toLowerCase());
       assert.equal(color,'#fd5638');
-      const buttons=await page.locator('.button:not(.button-blue):not(.button-outline):not(:disabled)').evaluateAll(nodes=>nodes.filter(el=>el.getBoundingClientRect().width>0).map(el=>({label:el.textContent.trim(),background:getComputedStyle(el).backgroundColor})));
-      for (const button of buttons) {assert.equal(button.background,'rgb(253, 86, 56)',`${route}: ${button.label}`);report.colors.push({lang,route,...button,result:'passed'});}
+      const buttons=await page.locator('.button:not(.button-blue):not(.button-outline):not(:disabled)').evaluateAll(nodes=>nodes.filter(el=>el.getBoundingClientRect().width>0).map(el=>({label:el.textContent.trim(),background:getComputedStyle(el).backgroundColor,color:getComputedStyle(el).color,size:parseFloat(getComputedStyle(el).fontSize),weight:Number(getComputedStyle(el).fontWeight),arrows:Array.from(el.querySelectorAll('svg path')).map(path=>getComputedStyle(path).stroke)})));
+      for (const button of buttons) {assert.equal(button.background,'rgb(253, 86, 56)',`${route}: ${button.label}`);assert.equal(button.color,'rgb(255, 255, 255)');assert.ok(button.size>=19&&button.weight>=700,`${route}: white-on-coral needs large bold text`);assert.ok(button.arrows.every(stroke=>stroke==='rgb(255, 255, 255)'));report.colors.push({lang,route,...button,result:'passed'});}
+      const action=page.locator('.sidebar-bottom > .button').first();
+      for(const state of ['hover','focus']) {
+        if(state==='hover')await action.hover();else {await page.mouse.move(0,0);await action.focus();}
+        const style=await action.evaluate(el=>({background:getComputedStyle(el).backgroundColor,color:getComputedStyle(el).color}));
+        assert.equal(style.background,'rgb(253, 86, 56)',`${route}: ${state}`);assert.equal(style.color,'rgb(255, 255, 255)');
+      }
+      if(route===''||route==='en/') {
+        const markers=await page.locator('.section-heading .eyebrow').evaluateAll(nodes=>nodes.map(el=>({color:getComputedStyle(el).color,background:getComputedStyle(el).backgroundColor,size:parseFloat(getComputedStyle(el).fontSize),weight:Number(getComputedStyle(el).fontWeight)})));
+        assert.ok(markers.length>0,'Landing section markers must be present');
+        for(const marker of markers){assert.equal(marker.color,'rgb(253, 86, 56)');assert.equal(marker.background,'rgb(255, 255, 255)');assert.ok(marker.size>=19&&marker.weight>=700);}
+      }
       if(route.includes('design-system')) {
+        const returnButton=await page.locator('.sidebar-return').evaluate(el=>{const s=getComputedStyle(el);return {background:s.backgroundColor,color:s.color,size:parseFloat(s.fontSize),weight:Number(s.fontWeight),arrow:getComputedStyle(el.querySelector('path')).stroke};});
+        assert.equal(returnButton.background,'rgb(253, 86, 56)');assert.equal(returnButton.color,'rgb(255, 255, 255)');assert.equal(returnButton.arrow,'rgb(255, 255, 255)');
+        assert.ok(returnButton.size>=19&&returnButton.weight>=700,'White on coral requires large bold text for AA');
         assert.equal(await page.locator('.ds-architecture-badge').count(),5);
         const pipelineIcons=await page.locator('.ds-pipeline-icon svg').evaluateAll(nodes=>nodes.map(el=>getComputedStyle(el).color));
         assert.equal(pipelineIcons.length,5);assert.ok(pipelineIcons.every(color=>color==='rgb(253, 86, 56)'));

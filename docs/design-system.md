@@ -43,3 +43,5 @@ PY
 Os arquivos gerados são versionados; o build e o deploy não dependem dessa etapa. Downloads em `/design/` ficam fora do sitemap. Os testes verificam capítulos, links, formatos dos dados, interação das camadas, marca existente, movimento reduzido, responsividade e contraste automatizado nas duas línguas, incluindo alto contraste.
 
 O inventário dos anexos e a matriz de correspondência estão em [model-audit.md](model-audit.md) e no final da página do design system. `npm test` verifica os destinos em português e inglês, as cores calculadas e os arquivos de download.
+
+Os botões laranja ativos usam `#FD5638` com texto e setas `#FFFFFF`, em 19 px e peso 700. O contraste de 3,20:1 atende AA para texto grande; a fonte 700 é carregada localmente. Marcadores de seção da landing page também usam o laranja canônico, com texto grande em fundo branco.
