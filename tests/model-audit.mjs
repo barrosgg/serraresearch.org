@@ -22,6 +22,9 @@ export async function auditModels(page, baseURL) {
       for (const button of buttons) {assert.equal(button.background,'rgb(253, 86, 56)',`${route}: ${button.label}`);report.colors.push({lang,route,...button,result:'passed'});}
       if(route.includes('design-system')) {
         assert.equal(await page.locator('.ds-architecture-badge').count(),5);
+        const pipelineIcons=await page.locator('.ds-pipeline-icon svg').evaluateAll(nodes=>nodes.map(el=>getComputedStyle(el).color));
+        assert.equal(pipelineIcons.length,5);assert.ok(pipelineIcons.every(color=>color==='rgb(253, 86, 56)'));
+        report.colors.push({lang,route,pipelineIcons,result:'passed'});
         assert.equal(await page.locator('.ds-spectrum-card').count(),4);
         const borders=await page.locator('.ds-spectrum-card').evaluateAll(nodes=>nodes.map(el=>getComputedStyle(el).borderTopColor));
         assert.deepEqual(borders,['rgb(16, 185, 129)','rgb(0, 114, 178)','rgb(253, 86, 56)','rgb(99, 102, 241)']);
